@@ -11,6 +11,8 @@ class DiningTablesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $user = factory(App\Dining_table::class,10)->create([
+            
+        ]);
     }
 }

@@ -11,6 +11,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $user = factory(App\User::class,10)->create([
+            'password' => bcrypt('user')
+        ]);
+
     }
 }
