@@ -18,6 +18,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'firstname' => $faker->firstname,
         'lastname' => $faker->lastname,
-        'role' => $faker->randomElement(['chef','waiter', 'owner'])
+        'role' => $faker->randomElement(['chef','waiter', 'owner']),
+        'remember_token' => null
     ];
 });

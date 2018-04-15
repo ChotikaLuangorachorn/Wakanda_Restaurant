@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Receipt as Receipt;
 class ReceiptsTableSeeder extends Seeder
 {
     /**
@@ -11,6 +11,9 @@ class ReceiptsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+    	$receipt = factory(Receipt::class,3)->create();
+
+        
+        
     }
 }
