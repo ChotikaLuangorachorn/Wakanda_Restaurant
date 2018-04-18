@@ -5,5 +5,9 @@
 @endsection
 
 @section('content')
-	<p>ตาราง แผนภาพ พวกยอดขาย อาหารยอดฮิต ...</p>
+	<div class="row">
+		<div class="col col-auto">
+			<p>ตาราง แผนภาพ พวกยอดขาย อาหารยอดฮิต ...</p>
+		</div>
+	</div>
 @endsection

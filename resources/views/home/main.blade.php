@@ -5,5 +5,9 @@
 @endsection
 
 @section('content')
-	<p>ทดสอบ</p>
+	<div class="row">
+		<div class="col col-auto">
+			<p>ทดสอบ</p>
+		</div>
+	</div>
 @endsection

@@ -27,6 +27,7 @@
       </form>
     </div>
   </nav>
+<!-- content -->
 	<div class="container">
 		<div class="row">
 			<div class='col-12' style="text-align: center; font-size: 1.5em;">
