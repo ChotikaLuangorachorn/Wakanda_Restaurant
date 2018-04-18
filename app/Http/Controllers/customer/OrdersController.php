@@ -15,8 +15,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $menu = 
-        return view('customer.menus');
+        $menus = Order::all();
+        return view('customer.menus',compact('menus'));
     }
 
     /**

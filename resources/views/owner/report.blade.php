@@ -6,7 +6,7 @@
 
 @section('content')
 	<div class="row">
-		<div class="col col-auto">
+		<div class="col">
 			<p>ตาราง แผนภาพ พวกยอดขาย อาหารยอดฮิต ...</p>
 		</div>
 	</div>
