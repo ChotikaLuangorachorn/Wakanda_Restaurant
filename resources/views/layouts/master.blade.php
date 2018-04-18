@@ -11,7 +11,7 @@
 <body>
 <!-- header   -->
   <header>
-    <img src="/images/theme/header.png">
+    <img src="/images/theme/header.png" style="width: 100%;">
   </header>
 <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
