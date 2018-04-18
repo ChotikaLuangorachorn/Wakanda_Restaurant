@@ -87,10 +87,10 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #888;
+  color: var(--gray-dark);
   text-align: left;
-  background-image: url('http://springsummer.dk/media/1250/ss-uniqlo_background_01a.jpg');
   background-size: cover;
+  background-image: url('/images/theme/background.jpg');
   background-attachment: fixed;
 }
 

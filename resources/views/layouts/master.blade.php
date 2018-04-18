@@ -10,7 +10,9 @@
 </head>
 <body>
 <!-- header   -->
-  <header>ss</header>
+  <header>
+    <img src="/images/theme/header.png">
+  </header>
 <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Navbar</a>
