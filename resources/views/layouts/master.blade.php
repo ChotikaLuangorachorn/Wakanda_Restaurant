@@ -34,9 +34,10 @@
 				@yield('page-title')
 			</div>
 		</div>
-		<div class="row">
-			@yield('content')
-		</div>
+
+		<!-- <div class="row"> -->
+		@yield('content')
+		<!-- </div> -->
 	</div>
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
