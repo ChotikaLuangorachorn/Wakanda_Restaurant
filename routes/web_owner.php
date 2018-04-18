@@ -1,5 +1,5 @@
 <?php
 //Owner
-Route::get('/owners/{id}', function () {
-    return view('owners.report');
+Route::get('/owner/{id}', function () {
+    return view('owner.report');
 })->where('id','[0-9]+');

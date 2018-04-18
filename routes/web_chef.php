@@ -1,5 +1,5 @@
 <?php
 //Chef
-Route::get('/chefs/{id}', function () {
-    return view('chefs.order');
+Route::get('/chef/{id}', function () {
+    return view('chef.order');
 })->where('id','[0-9]+');

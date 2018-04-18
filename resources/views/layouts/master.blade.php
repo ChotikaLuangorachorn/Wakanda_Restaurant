@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title>Wakanda</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	@stack('css')
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<!-- header   -->
+<header>ss</header>
 <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -37,5 +39,7 @@
 	</div>
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
+<!-- footer -->
+<footer>ffew</footer>
 </body>
 </html>

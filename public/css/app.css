@@ -10472,7 +10472,9 @@ body {
   line-height: 1.5;
   color: #888;
   text-align: left;
-  background-color: #fff;
+  background-image: url("http://springsummer.dk/media/1250/ss-uniqlo_background_01a.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 [tabindex="-1"]:focus {
@@ -21086,5 +21088,13 @@ legend {
 .list-group-item h5,
 .list-group-item h6 {
   color: inherit;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: var(--white);
+  background-color: var(--teal);
 }
 

@@ -1,5 +1,5 @@
 <?php
 //Waiter
-Route::get('/waiters/{id}', function () {
-    return view('waiters.serve_wait_order');
+Route::get('/waiter/{id}', function () {
+    return view('waiter.serve_wait_order');
 })->where('id','[0-9]+');

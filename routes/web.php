@@ -20,8 +20,8 @@ Route::get('/', function () {
 // });
 
 // Customer
-Route::get('/customers/{id}', function () {
-    return view('customers.menus');
+Route::get('/customer/{id}', function () {
+    return view('customer.menus');
 })->where('id','[0-9]+');
 
 // //Chef
