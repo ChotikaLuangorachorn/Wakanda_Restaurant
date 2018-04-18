@@ -22,6 +22,7 @@ class CreateMenusTable extends Migration
             $table->foreign('category_id')
                     ->references('id')
                     ->on('categories');
+            $table->enum('status', ['sell', 'not sell'])->default('sell');
             $table->timestamps();
         });
     }
