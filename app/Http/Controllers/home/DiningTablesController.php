@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\home;
 
+use App\Dining_table;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ChefsController extends Controller
+class DiningTablesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,10 +42,10 @@ class ChefsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Dining_table $dining_table)
     {
         //
     }
@@ -51,10 +53,10 @@ class ChefsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dining_table $dining_table)
     {
         //
     }
@@ -63,10 +65,10 @@ class ChefsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dining_table $dining_table)
     {
         //
     }
@@ -74,10 +76,10 @@ class ChefsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dining_table $dining_table)
     {
         //
     }

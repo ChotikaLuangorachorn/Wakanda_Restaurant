@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- header   -->
-<header>ss</header>
+  <header>ss</header>
 <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -42,6 +42,6 @@
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
 <!-- footer -->
-<footer>ffew</footer>
+  <footer>ffew</footer>
 </body>
 </html>
