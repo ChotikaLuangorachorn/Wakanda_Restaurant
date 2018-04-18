@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\customer;
 
-use App\Order;
+use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OrdersController extends Controller
+class MenusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menu::all();
+        return view('customer.menu',['menus' => $menus]);
     }
 
     /**
@@ -42,10 +43,10 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Menu $menu)
     {
         //
     }
@@ -53,10 +54,10 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Menu $menu)
     {
         //
     }
@@ -65,10 +66,10 @@ class OrdersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Menu $menu)
     {
         //
     }
@@ -76,10 +77,10 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Menu $menu)
     {
         //
     }

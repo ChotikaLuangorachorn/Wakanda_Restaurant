@@ -1,13 +1,15 @@
 @extends('layouts.customer')
 
 @section('page-title')
-	<p>pt</p>
+	<p>รายการอาหาร</p>
 @endsection
 
 @section('content')
 	<div class="row">
 		<div class="col">
-			<p>{{$menus}}</p>
+			@foreach($menus as $menu)
+				{{ $menu->name }} <br>
+			@endforeach
 		</div>
 	</div>
 @endsection
