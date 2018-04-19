@@ -17,7 +17,7 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->float('price', 10, 2);
-            $table->string('image_path');
+            $table->string('image_path')->default('');
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')
                     ->references('id')
