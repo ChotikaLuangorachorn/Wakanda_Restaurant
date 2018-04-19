@@ -11,7 +11,7 @@ class ReceiptsTableSeeder extends Seeder
      */
     public function run()
     {
-    	$receipt = factory(Receipt::class,3)->create();
+    	$receipt = factory(Receipt::class,10)->create();
 
         
         
