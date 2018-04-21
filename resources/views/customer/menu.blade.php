@@ -29,7 +29,22 @@
 						@if ($menu->image_path!='')
 						<img src="/images/menu/{{$menu->image_path}}" style="width: 100%">
 						@endif
-						<p class="card-text">{{number_format($menu->price,2)}} บาท</p>
+						<p class="card-text">
+							<p>{{number_format($menu->price,2)}} บาท</p>
+							<div class="row" id="number">
+								<div class="col-sm-4" style="text-align: right; padding: 0px;">
+									<i class="btn material-icons" style="font-size: 36px; color: var(--danger);" v-on:click="decrease({{$menu->id}})">remove_circle_outline</i>
+								</div>
+								<div class="col-sm-4" >
+									<div class="form-group">
+										<input class="form-control" id="number-order" type="text"  id="{{$menu->id}}" placeholder="จำนวน" style="text-align:center;" maxlength="2" size="2">
+									</div>
+								</div>
+								<div class="col-sm-4" style="text-align: left; padding: 0px;">
+									<i class="btn material-icons" style="font-size: 36px;color: var(--info);" v-on:click="increase({{$menu->id}})">add_circle_outline</i>
+								</div>
+						    </div>					
+						</p>
 					</div>
 				</div>
 				@endif
@@ -42,7 +57,6 @@
 @push("js")
 	<script>
 		var categories = JSON.parse('{!! json_encode($categories) !!}');
-		var dining_table = JSON.parse('{!! json_encode($dining_table) !!}');
 	</script>
 	<script src="/js/customer/menu.js" charset="utf-8"></script>
 @endpush

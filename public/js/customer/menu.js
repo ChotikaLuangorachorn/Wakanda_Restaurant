@@ -87,7 +87,7 @@ if (categories.length != 0) {
 	$('#card-category1').show();
 }
 
-var example2 = new Vue({
+var selectCategory = new Vue({
 	el: '#btn-category',
 	methods: {
 		showMenu: function showMenu(id) {
@@ -100,10 +100,21 @@ var example2 = new Vue({
 		}
 	}
 });
-console.log(dining_table);
-document.getElementById("menu1").href = dining_table.id;
-document.getElementById("menu2").href = dining_table.id + '/ordering';
-document.getElementById("menu3").href = dining_table.id + '/ordered';
+
+var selectNumber = new Vue({
+	el: '#number',
+	methods: {
+		decrease: function decrease(menu_id) {
+			if (document.getElementById("number-order").value >= 1) {
+				document.getElementById("number-order").value = parseInt(document.getElementById("number-order").value) - 1;
+			}
+		},
+		increase: function increase(menu_id) {
+			$('#menu' + menu_id).val += 1;
+			document.getElementById("number-order").value = parseInt(document.getElementById("number-order").value) + 1;
+		}
+	}
+});
 
 /***/ })
 

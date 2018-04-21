@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-         $category = factory(App\Category::class)->create(['name'=> 'อาหารเรียกน้ำย่อย']);
+         $category = factory(App\Category::class)->create(['name'=> 'อาหารรองท้อง']);
          $category = factory(App\Category::class)->create(['name'=> 'อาหารจานหลัก']);
          $category = factory(App\Category::class)->create(['name'=> 'เครื่องดื่ม']);
          $category = factory(App\Category::class)->create(['name'=> 'ของหวาน']);
