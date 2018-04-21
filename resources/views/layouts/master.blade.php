@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Wakanda</title>
+	<title>WAKANDA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -15,7 +15,7 @@
   </header>
 <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="">WAKANDA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,6 +45,6 @@
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
 <!-- footer -->
-  <footer>ffew</footer>
+  <footer>Wakanda Restaurant</footer>
 </body>
 </html>
