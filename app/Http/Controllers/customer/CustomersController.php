@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers\customer;
 
-use App\Menu;
-use App\Category;
-use App\Dining_table;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-    
-class MenusController extends Controller
+
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @param  \App\Diner_table  $dining_table
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index(Dining_table $dining_table)
+    public function index()
     {
-        $menus = Menu::all();
-        $categories = Category::all();
-        // $categories = Category::all();
-        // return $user;
-        return view('customer.menu',['menus' => $menus, 'categories' => $categories, 'dining_table' => $dining_table]);
+        //
     }
 
     /**
@@ -48,10 +42,10 @@ class MenusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Menu  $menu
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Menu $menu)
+    public function show(User $user)
     {
         //
     }
@@ -59,10 +53,10 @@ class MenusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Menu  $menu
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit(User $user)
     {
         //
     }
@@ -71,10 +65,10 @@ class MenusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Menu  $menu
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -82,10 +76,10 @@ class MenusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Menu  $menu
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy(User $user)
     {
         //
     }

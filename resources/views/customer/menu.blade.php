@@ -42,6 +42,7 @@
 @push("js")
 	<script>
 		var categories = JSON.parse('{!! json_encode($categories) !!}');
+		var dining_table = JSON.parse('{!! json_encode($dining_table) !!}');
 	</script>
 	<script src="/js/customer/menu.js" charset="utf-8"></script>
 @endpush

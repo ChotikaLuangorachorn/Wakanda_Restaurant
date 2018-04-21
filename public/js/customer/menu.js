@@ -100,6 +100,10 @@ var example2 = new Vue({
 		}
 	}
 });
+console.log(dining_table);
+document.getElementById("menu1").href = dining_table.id;
+document.getElementById("menu2").href = dining_table.id + '/ordering';
+document.getElementById("menu3").href = dining_table.id + '/ordered';
 
 /***/ })
 
