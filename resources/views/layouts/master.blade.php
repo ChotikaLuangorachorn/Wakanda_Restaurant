@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	@stack('css')
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 </head>
 <body>
 <!-- header   -->
@@ -33,9 +34,7 @@
 <!-- content -->
 	<div class="container">
 		<div class="row">
-			<div class='col-12' style="text-align: center; font-size: 1.5em;">
 				@yield('page-title')
-			</div>
 		</div>
 
 		<!-- <div class="row"> -->
@@ -45,6 +44,6 @@
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
 <!-- footer -->
-  <footer>Wakanda Restaurant</footer>
+<!--   <footer>Wakanda Restaurant</footer> -->
 </body>
 </html>
