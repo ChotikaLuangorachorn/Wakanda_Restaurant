@@ -2,16 +2,16 @@
 //Chef
 
 //Route::resource('/orders', 'chef\OrdersController@index');
-Route::get('/orders', 'chef\OrdersController@index');
-Route::get('/orders/{order}', 'chef\OrdersController@show')
+Route::get('chef/orders', 'chef\OrdersController@index');
+Route::get('chef/orders/{order}', 'chef\OrdersController@show')
 ->where('order', '[0-9]+');
-Route::get('/orders/create', 'chef\OrdersController@create');
-Route::post('/orders', 'chef\OrdersController@store');
-Route::get('/orders/{order}/edit', 'chef\OrdersController@edit')
+Route::get('chef/orders/create', 'chef\OrdersController@create');
+Route::post('chef/orders', 'chef\OrdersController@store');
+Route::get('chef/orders/{order}/edit', 'chef\OrdersController@edit')
 ->where('order', '[0-9]+');
-Route::put('/orders/{order}', 'chef\OrdersController@update')
+Route::put('chef/orders/{order}', 'chef\OrdersController@update')
 ->where('order', '[0-9]+');
-Route::delete('/orders/{order}', 'chef\OrdersController@destroy');
+Route::delete('chef/orders/{order}', 'chef\OrdersController@destroy');
 
 
 // Route::get('/chef/{id}', function () {

@@ -1,13 +1,15 @@
 @extends('layouts.chef')
 
 @section('page-title')
-	<p>รายการอาหารที่สั่ง</p>
+
+	<h1 class="display-5"> รายการอาหารที่สั่ง</h1>
+	
 @endsection
 
 @section('content')
 	<div>
 	<table class="table ">
-		<thead>
+		<thead class="table-danger">
 			<tr>
 			<th scope="col">หมายเลขโต๊ะ</th>
 			<th scope="col">รายการอาหารที่สั่ง</th>
@@ -27,8 +29,8 @@
 				<th>{{ $order->amount}}</th> 
 				<!-- <th>{{ $order->status }}</th>  -->
 				<th>
-					<button type="button" class="btn btn-outline-success">กำลังทำ</button>
-					<button type="button" class="btn btn-outline-secondary">ทำเสร็จแล้ว</button>
+					<button type="button" class="btn btn-secondary">กำลังทำ</button>
+					<button type="button" class="btn btn-success">ทำเสร็จแล้ว</button>
 					
 				</th>
 				</tr>
@@ -37,5 +39,6 @@
 
 		</tbody>
 	</table>
+	<!-- <button id="btn-go-to-top" title="Go to top">Top</button> -->
 	</div>
 @endsection
