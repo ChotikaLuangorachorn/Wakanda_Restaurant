@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\waiter;
 
 use App\Order;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,8 +15,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-      // $orders = Order::all();
-      $orders = DB::table('orders')->orderBy('receipt_id')->get();
+      $orders = Order::where('status','=','cooked')->orWhere('status','served')->orderBy('receipt_id')->get();
       return view('waiter.serve', ['orders' => $orders]);
     }
 
