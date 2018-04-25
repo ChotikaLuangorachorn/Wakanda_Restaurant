@@ -6,30 +6,45 @@
 		
 	</div>
 	<div class="col-sm-2" style="text-align: right;">
-		<i class="btn fas fa-shopping-basket" onclick="document.getElementById('modal-basket').style.display='block'" style="color:var(--info); font-size: 36px;"></i>
+		<i class="btn fas fa-shopping-basket"  style="color:var(--info); font-size: 36px;"></i>
 	</div>
 
 	<div class="modal" id="modal-basket">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">รายการอาหารที่คุณกำลังสั่ง</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('modal-basket').style.display='none'">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <p>Modal body text goes here.</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">ชำระเงิน</button>
-	      </div>
-	    </div>
-	  </div>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		    		<h5 class="modal-title">รายการอาหารที่คุณกำลังสั่ง</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('modal-basket').style.display='none'">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table id="ordering-table">
+	                    <thead>
+	                        <tr style="text-align: center;">
+	                            <th onclick="" scope="col" style="width: 250px;">รายการอาหาร</th>
+	                            <th onclick="" scope="col" style="width: 100px;">จำนวน</th>
+	                            <th onclick="" scope="col" style="width: 100px;">ราคา</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody id='tbody-ordering'>
+	                    </tbody>
+	                </table>
+				</div>
+				<div class="modal-footer">
+					ราคาทั้งหมด <div id="total_price">0</div> บาท
+					<form action="/customer/{{$dining_table->id}}" method="post">
+						 {{ csrf_field() }}
+						<input name="order" id="order" type="text" value="asadad" hidden="true">
+						<button type="submit" id="btn-purchase" class="btn btn-primary">ชำระเงิน</button>
+					</form>
+				</div>
+	    	</div>
+		</div>
 	</div>
 
 	<button id="btn-go-to-top" title="Go to top">Top</button>
-	<i class="btn fas fa-shopping-basket" id='btn-basket' onclick="document.getElementById('modal-basket').style.display='block'" style="color:var(--info); font-size: 36px;"></i>
+	<i class="btn fas fa-shopping-basket" id='btn-basket' style="color:var(--info); font-size: 36px;"></i>
 
 
 
@@ -69,7 +84,7 @@
 								</div>
 								<div class="col-sm-4" >
 									<div class="form-group">
-										<input class="form-control" type="text"  id="number-menu{{$menu->id}}" placeholder="จำนวน" style="text-align:center;" maxlength="2" size="2" value='0'>
+										<input class="form-control" type="text"  id="number-menu{{$menu->id}}" placeholder="จำนวน" style="text-align:center;" maxlength="2" size="2" value='0' readonly>
 									</div>
 								</div> 
 								<div class="col-sm-4" id='btn-increase' style="padding: 0px;">

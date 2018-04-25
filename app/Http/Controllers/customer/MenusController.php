@@ -5,11 +5,14 @@ namespace App\Http\Controllers\customer;
 use App\Menu;
 use App\Category;
 use App\Dining_table;
+use App\Receipt;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
     
 class MenusController extends Controller
 {
+    // public $table_id;
     /**
      * Display a listing of the resource.
      * @param  \App\Diner_table  $dining_table
@@ -17,7 +20,8 @@ class MenusController extends Controller
      */
     public function index(Dining_table $dining_table)
     {
-        $menus = Menu::all();
+        // $this->table_id = $dining_table->id;
+        $menus = Menu::all()->keyBy('id');
         $categories = Category::all();
         // $categories = Category::all();
         // return $user;
@@ -31,7 +35,7 @@ class MenusController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -40,9 +44,26 @@ class MenusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Dining_table $dining_table)
     {
-        //
+        $table_id = $dining_table->id;
+        $orders = json_decode($request['order'],true);
+        $menus = Menu::all()->keyBy('id');
+        // create new receipt
+        $receipt= new Receipt;
+        $receipt->table_id = $table_id;
+        $receipt->save();
+        $receipt_id = $receipt->id;
+        // create new order
+        foreach ($orders as $key => $value) {
+            $order = new Order;
+            $order->menu_id = $key;
+            $order->amount = $value;
+            $order->receipt_id = $receipt_id;
+            $order->save();
+        }
+            // return redirect('/users/'.$user->id);
+        return  redirect('/customer/'.$dining_table->id);
     }
 
     /**
