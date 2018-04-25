@@ -15,8 +15,8 @@ class DiningTablesController extends Controller
      */
     public function index()
     {
-        $dining_table = Dining_table::all();
-        return view('waiter.manageTable', ['dining_table' => $dining_table]);
+        $dining_tables = Dining_table::all();
+        return view('waiter.manageTable', ['dining_tables' => $dining_tables]);
     }
 
     /**
@@ -83,5 +83,16 @@ class DiningTablesController extends Controller
     public function destroy(Dining_table $dining_table)
     {
         //
+    }
+
+    public function count(Dining_table $dining_table)
+    {
+        $count = 0;
+        foreach($dining_table->receipts as $receipt){
+          foreach($receipt->orders as $order){
+            $count = $count + 1;
+          }
+        }
+        return $count;
     }
 }
