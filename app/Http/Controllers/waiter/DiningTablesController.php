@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\waiter;
 
 use App\Dining_table;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class Dining_tablesController extends Controller
+class DiningTablesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class Dining_tablesController extends Controller
      */
     public function index()
     {
-      $Dining_tables = Dining_table::all();
-      return view('waiter.manage_table', ['Dining_tables' => $Dining_tables]);
+        $dining_table = Dining_table::all();
+        return view('waiter.manageTable', ['dining_table' => $dining_table]);
     }
 
     /**
