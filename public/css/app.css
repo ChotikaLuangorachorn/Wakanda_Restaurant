@@ -21107,7 +21107,7 @@ footer {
   font-size: 16px;
   border: none;
   outline: none;
-  background-color: var(--secondary);
+  background-color: var(--teal);
   color: white;
   cursor: pointer;
   padding: 10px;

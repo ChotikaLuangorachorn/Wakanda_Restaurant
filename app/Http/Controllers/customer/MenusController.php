@@ -46,24 +46,34 @@ class MenusController extends Controller
      */
     public function store(Request $request,Dining_table $dining_table)
     {
-        $table_id = $dining_table->id;
-        $orders = json_decode($request['order'],true);
-        $menus = Menu::all()->keyBy('id');
-        // create new receipt
-        $receipt= new Receipt;
-        $receipt->table_id = $table_id;
-        $receipt->save();
-        $receipt_id = $receipt->id;
-        // create new order
-        foreach ($orders as $key => $value) {
-            $order = new Order;
-            $order->menu_id = $key;
-            $order->amount = $value;
-            $order->receipt_id = $receipt_id;
-            $order->save();
+        try {
+            $validatedData = $request->validate([
+                'cardNumber' => 'required|min:16|max:16',
+                'exp' => 'required',
+                'cvv' => 'required|min:3|max:3',
+            ]);
+            $table_id = $dining_table->id;
+            $orders = json_decode($request['order'],true);
+            $menus = Menu::all()->keyBy('id');
+            // create new receipt
+            $receipt= new Receipt;
+            $receipt->table_id = $table_id;
+            $receipt->save();
+            $receipt_id = $receipt->id;
+            // create new order
+            foreach ($orders as $key => $value) {
+                $order = new Order;
+                $order->menu_id = $key;
+                $order->amount = $value;
+                $order->receipt_id = $receipt_id;
+                $order->save();
+            }
+                // return redirect('/users/'.$user->id);
+            return  redirect('/customer/'.$dining_table->id.'/ordered');
+        } catch (Exception $e) {
+            return back()->withInput(); 
         }
-            // return redirect('/users/'.$user->id);
-        return  redirect('/customer/'.$dining_table->id);
+        
     }
 
     /**
