@@ -12,7 +12,10 @@
 @endsection
 
 @section('page-title')
-	@yield('page-title')
+	<div class="jumbotron">
+
+		@yield('page-title')
+	</div>	
 @endsection
 
 @section('content')
