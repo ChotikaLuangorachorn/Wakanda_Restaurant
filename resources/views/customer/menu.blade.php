@@ -6,7 +6,7 @@
 		
 	</div>
 	<div class="col-sm-2" style="text-align: right;">
-		<i class="btn fas fa-shopping-basket"  style="color:var(--info); font-size: 36px;"></i>
+		<i class="btn fas fa-shopping-basket"  style="color:var(--pink); font-size: 36px;"></i>
 	</div>
 
 	<div class="modal" id="modal-basket">
@@ -30,21 +30,36 @@
 	                    <tbody id='tbody-ordering'>
 	                    </tbody>
 	                </table>
+	                <b class="float-left">ราคารวม <span id="total_price">0</span> บาท</b>
+					<button type="button" class="btn btn-secondary float-right" id="btn-purchase">ชำระเงิน</button>
 				</div>
-				<div class="modal-footer">
-					ราคาทั้งหมด <div id="total_price">0</div> บาท
-					<form action="/customer/{{$dining_table->id}}" method="post">
-						 {{ csrf_field() }}
-						<input name="order" id="order" type="text" value="asadad" hidden="true">
-						<button type="submit" id="btn-purchase" class="btn btn-primary">ชำระเงิน</button>
-					</form>
+				<div class="modal-footer row">
+					<div class="col-sm-9" style="margin:0 auto; text-align: center;">
+						<form action="/customer/{{$dining_table->id}}" id='form-purchase' method="post">
+							 {{ csrf_field() }}
+							@if ($errors->any())
+							    <div class="alert alert-warning" style="text-align: left;">
+							        <ul>
+							            @foreach ($errors->all() as $error)
+							                <li>{{ $error }}</li>
+							            @endforeach
+							        </ul>
+							    </div>
+							@endif							 
+							<input name="order" id="order" type="text" value="" hidden="true">
+							<input class='form-control' type="number" name="cardNumber" maxlength="16" placeholder='Card Number' value="{{ old('cardNumber') }}">
+							<input class='form-control' id="month" type="month" name='exp' placeholder='Expire Date' value="{{ old('exp') }}">
+							<input class='form-control' type="number" name="cvv" maxlength="3" placeholder='CVV' value="{{ old('cvv') }}"><hr>
+							<button type="submit" id="btn-submit-purchase" class="btn btn-primary">ยืนยันการชำระเงิน</button>
+						</form>
+					</div>
 				</div>
 	    	</div>
 		</div>
 	</div>
 
 	<button id="btn-go-to-top" title="Go to top">Top</button>
-	<i class="btn fas fa-shopping-basket" id='btn-basket' style="color:var(--info); font-size: 36px;"></i>
+	<i class="btn fas fa-shopping-basket" id='btn-basket' style="color:var(--pink); font-size: 36px;"></i>
 
 
 
