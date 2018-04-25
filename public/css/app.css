@@ -21091,9 +21091,55 @@ legend {
 }
 
 footer {
+  text-align: center;
   bottom: 0;
   width: 100%;
   color: var(--white);
-  background-color: var(--teal);
+  background-color: var(--primary);
+}
+
+#btn-go-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: var(--secondary);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#btn-basket {
+  display: none;
+  position: fixed;
+  bottom: 110px;
+  right: 9px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+@media only screen and (orientation: landscape) {
+  #btn-decrease {
+    text-align: right;
+  }
+
+  #btn-increase {
+    text-align: left;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  #btn-decrease #btn-increase {
+    text-align: center;
+  }
 }
 

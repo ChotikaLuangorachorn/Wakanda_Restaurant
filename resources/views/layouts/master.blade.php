@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Wakanda</title>
+	<title>WAKANDA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	@stack('css')
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 </head>
 <body>
 <!-- header   -->
@@ -15,7 +16,7 @@
   </header>
 <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="">WAKANDA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,9 +34,7 @@
 <!-- content -->
 	<div class="container">
 		<div class="row">
-			<div class='col-12' style="text-align: center; font-size: 1.5em;">
 				@yield('page-title')
-			</div>
 		</div>
 
 		<!-- <div class="row"> -->
@@ -45,6 +44,6 @@
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
 <!-- footer -->
-  <footer>ffew</footer>
+<!--   <footer>Wakanda Restaurant</footer> -->
 </body>
 </html>

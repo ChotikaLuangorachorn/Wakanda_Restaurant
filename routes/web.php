@@ -20,7 +20,8 @@ Route::get('/', function () {
 // });
 
 // Customer
-Route::get('/customer/{dining_table}', 'customer\MenusController@index')->where('id','[0-9]+');
+Route::get('/customer/{dining_table}', 'customer\MenusController@index')->where('dining_table','[0-9]+');
+
 
 // //Chef
 // Route::get('/chefs/{id}', function () {
