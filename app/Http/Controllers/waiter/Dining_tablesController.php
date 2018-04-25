@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\waiter;
+namespace App\Http\Controllers;
 
-use App\Order;
-use Illuminate\Support\Facades\DB;
+use App\Dining_table;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class OrdersController extends Controller
+class Dining_tablesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-      $orders = DB::table('Order')->orderBy('receipt_id')->get();
-      return view('waiter.serve', ['orders' => $orders]);
+      $tables = Dining_table::all();
+      return view('waiter.manage_table', ['tables' => $tables]);
     }
 
     /**
@@ -44,10 +42,10 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Dining_table $dining_table)
     {
         //
     }
@@ -55,10 +53,10 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Dining_table $dining_table)
     {
         //
     }
@@ -67,10 +65,10 @@ class OrdersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Dining_table $dining_table)
     {
         //
     }
@@ -78,10 +76,10 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Dining_table  $dining_table
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Dining_table $dining_table)
     {
         //
     }

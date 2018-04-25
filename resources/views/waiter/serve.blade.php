@@ -1,7 +1,7 @@
 @extends('layouts.waiter')
 
-@section('page-title')
-	<p>รายการอาหารรอเสิร์ฟ</p>
+@section('page-title-waiter')
+	รายการอาหารรอเสิร์ฟ
 @endsection
 
 @section('content')

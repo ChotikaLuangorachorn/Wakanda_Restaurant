@@ -15,6 +15,7 @@ class CreateDiningTablesTable extends Migration
     {
         Schema::create('dining_tables', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('seat');
             $table->enum('status', [
                 'busy', 'empty'
             ])->default('empty');
