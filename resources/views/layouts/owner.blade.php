@@ -4,10 +4,10 @@
 	<a class="nav-link" href="#">รายงานสรุป<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
-    <a class="nav-link" href="#">จัดการสมุดรายการอาหาร</a>
+    <a class="nav-link" href="{{ url('/menus')}}">จัดการสมุดรายการอาหาร</a>
 	</li>
 	<li class="nav-item">
-    <a class="nav-link" href="#">จัดการพนักงาน</a>
+    <a class="nav-link" href="{{ url('/users')}}">จัดการพนักงาน</a>
 	</li>
 @endsection
 
