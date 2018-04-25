@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\customer;
 
 use App\Order;
+use App\Menu;
+use App\Category;
+use App\Dining_table;
+use App\Receipt;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,9 +18,11 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Dining_table $dining_table)
     {
-        //
+        $receipts = Receipt::where('table_id', $dining_table->id);
+        $orders = Order::where('receipt_id', null);
+        return 
     }
 
     /**

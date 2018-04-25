@@ -24,39 +24,32 @@ var selectCategory = new Vue({
 					})
 
 var selectNumber = new Vue({
-					  el: '#menu-list',
-					  data: {
-					  		order:{
+						el: '#menu-list',
+						data: {
+							order:{}
+						},
+						methods: {
+					    	decrease: function (menu_id) {
+						    	if (this.$data.order[menu_id] >=1){
+						    		this.$data.order[menu_id]--;
+						    		document.getElementById("number-menu"+menu_id).value = this.$data.order[menu_id];
+						    		console.log(this.$data.order);
+						    	}
+					    	},
+						    increase: function (menu_id) {
+						    	console.log(this.$data.order[menu_id]);
+						    	console.log("increase");
+						    	if(!(menu_id in this.$data.order))
+						    		this.$data.order[menu_id] = 1;
+						    	else
+						    		this.$data.order[menu_id]++;
+								document.getElementById("number-menu"+menu_id).value = this.$data.order[menu_id];
+								console.log(this.$data.order);
+						    }
+					 	},
+					  	mounted(){
 
-					  		}
-					  
-					  },
-					  methods: {
-					    decrease: function (menu_id) {
-					    	if (this.$data.order["m" + menu_id] >=1){
-					    		this.$data.order["m" + menu_id]--;
-					    		document.getElementById("number-menu"+menu_id).value = this.$data.order["m" + menu_id];
-					    	}
-					    },
-					    increase: function (menu_id) {
-					    	console.log(this.$data.order["m"+menu_id]);
-					    	console.log("increase");
-					    	
-					    	this.$data.empty += "s";
-					    	this.$data.amt++;
-					    	this.$data.order["m" + menu_id]++;
-							document.getElementById("number-menu"+menu_id).value = this.$data.order["m" + menu_id];
-							console.log(this.$data.order);
-					    }
-					  },
-					  mounted(){
-					  	console.log(this.$data.order);
-					  	console.log("mouted", menus);
-					  	for (var i =0 ; i<menus.length; i++) {
-					  		this.$data.order["m" + menus[i].id] = 0;
 					  	}
-					  	console.log(this.$data.order);
-					  }
 					})
 
 
@@ -81,3 +74,44 @@ $('#btn-go-to-top').click(function(e){
 	document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 });
+
+
+//modal basket
+$('.fa-shopping-basket').click(function(e){
+	document.getElementById('modal-basket').style.display='block';
+	showOrderingTable();
+	$("#order").val(JSON.stringify(selectNumber.order));
+});
+
+function showOrderingTable(){
+	tbody = $("#tbody-ordering");
+	console.log(menus);
+	tbody.empty();
+	var total_price = 0.0;
+	Object.keys(selectNumber.order).forEach(function(menu_id) {
+		if (selectNumber.order[menu_id] != 0){
+
+			tr = tbody.append("<tr id='list'></tr>").children().last();
+			tr.append("<td scope='row'>" + menus[menu_id].name + "</td>");
+			tr.append("<td scope='row' style='text-align:right;'>" + selectNumber.order[menu_id] + "</td>");
+			tr.append("<td scope='row' style='text-align:right;'>" + menus[menu_id].price * selectNumber.order[menu_id] + "</td>");
+			total_price+= menus[menu_id].price * selectNumber.order[menu_id];
+		}
+	});
+	$('#total_price').text(total_price);
+
+
+	
+};
+
+// $("#btn-purchase").click(function(e){
+// 	console.log("purchase");
+// 	$.ajax({
+// 		method: "post",
+// 		data: {
+// 			m1:1,
+// 			m2:2
+// 		},
+// 		url: "/order"
+// 	})
+// })

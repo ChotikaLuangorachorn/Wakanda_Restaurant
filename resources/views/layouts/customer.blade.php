@@ -4,9 +4,6 @@
 	<a class="nav-link" href="{{$dining_table->id}}">เมนูอาหาร<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
-    <a class="nav-link" href="{{$dining_table->id}}/ordering">รายการอาหารกำลังสั่ง</a>
-	</li>
-	<li class="nav-item">
     <a class="nav-link" href="{{$dining_table->id}}/ordered">รายการอาหารที่สั่งแล้ว</a>
 	</li>
 @endsection
