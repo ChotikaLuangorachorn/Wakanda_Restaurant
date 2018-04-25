@@ -7,4 +7,5 @@ Route::get('waiter/manage_table',function(){
   return view('waiter.manage_table');
 });
 
-Route::get('/waiter/serve', 'OrdersController@index');
+Route::get('/waiter/serve', 'waiter\OrdersController@index');
+Route::get('/waiter/manage_table', 'waiter\Dining_tablesController@index');

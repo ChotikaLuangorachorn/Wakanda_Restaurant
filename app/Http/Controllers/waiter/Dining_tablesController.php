@@ -14,8 +14,8 @@ class Dining_tablesController extends Controller
      */
     public function index()
     {
-      $tables = Dining_table::all();
-      return view('waiter.manage_table', ['tables' => $tables]);
+      $Dining_tables = Dining_table::all();
+      return view('waiter.manage_table', ['Dining_tables' => $Dining_tables]);
     }
 
     /**

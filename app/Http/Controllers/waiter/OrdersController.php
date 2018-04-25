@@ -16,7 +16,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-      $orders = DB::table('Order')->orderBy('receipt_id')->get();
+      // $orders = Order::all();
+      $orders = DB::table('orders')->orderBy('receipt_id')->get();
       return view('waiter.serve', ['orders' => $orders]);
     }
 
