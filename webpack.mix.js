@@ -12,5 +12,6 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-	.js('resources/assets/js/customer/menu.js', 'public/js/customer')
+    .js('resources/assets/js/customer/menu.js', 'public/js/customer')
+    .js('resources/assets/js/chef/order.js', 'public/js/chef')
    .sass('resources/assets/sass/app.scss', 'public/css');

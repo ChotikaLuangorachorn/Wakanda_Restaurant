@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\chef;
 
 use App\Order;
+use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +16,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at', 'desc')->get();
-        return view('chef.order' , compact('orders'));
+        $orders = Order::orderBy('created_at', 'ASC')->get();
+        $menus = Menu::all()->keyBy('id');
+        return view('chef.order' , compact('orders','menus'));
     }
 
     /**
@@ -37,7 +39,10 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request["id"];
+        $order = Order::find($id);
+        $order->status = "cooked";
+        $order->save();
     }
 
     /**
