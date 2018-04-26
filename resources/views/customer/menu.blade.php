@@ -2,7 +2,7 @@
 
 @section('page-title')
 	<div class="col-sm-10">
-		<h2>รายการอาหาร</h2>
+		<h2><i class="fas fa-utensils"></i> รายการอาหาร</h2>
 		
 	</div>
 	<div class="col-sm-2" style="text-align: right;">
@@ -30,6 +30,7 @@
 	                    <tbody id='tbody-ordering'>
 	                    </tbody>
 	                </table>
+	                <br>
 	                <b class="float-left">ราคารวม <span id="total_price">0</span> บาท</b>
 					<button type="button" class="btn btn-secondary float-right" id="btn-purchase">ชำระเงิน</button>
 				</div>
@@ -61,8 +62,6 @@
 	<button id="btn-go-to-top" title="Go to top">Top</button>
 	<i class="btn fas fa-shopping-basket" id='btn-basket' style="color:var(--pink); font-size: 36px;"></i>
 
-
-
 @endsection
 
 @section('content')
@@ -70,10 +69,11 @@
 	<div class="row" id="btn-category" style="text-align: center;">
 		@foreach($categories as $category)
 		<div class="col">
-			<button type="button" class="btn btn-danger" id='btn-category{{$category->id}}' value="category{{$category->id}}" v-on:click="showMenu({{$category->id}})">{{$category->name}}</button>
+			<button type="button" class="btn btn-warning" id='btn-category{{$category->id}}' value="category{{$category->id}}" v-on:click="showMenu({{$category->id}})" style="color: var(--gray-dark);">{{$category->name}}</button>
 		</div>
 		@endforeach
 	</div>
+
 	<div id="menu-list">
 	@foreach($categories as $category)
 		<!-- <div class="col">
@@ -89,9 +89,10 @@
 					<div class="card-body">
 						<!-- <h4 class="card-title"></h4> -->
 						@if ($menu->image_path!='')
-						<img src="/images/menu/{{$menu->image_path}}" style="width: 100%">
+						<div id='img-menu' style="width: 100%;height: 150px;background: url(/images/menu/{{$menu->image_path}});background-repeat: no-repeat;background-size: cover;background-position: center">
+						</div>
 						@endif
-						<p class="card-text">
+						<div class="card-text">
 							<p>{{number_format($menu->price,2)}} บาท</p>
 							<div class="row">
 								<div class="col-sm-4" id='btn-decrease' style="padding: 0px;">
@@ -106,7 +107,7 @@
 									<i class="btn material-icons" style="font-size: 36px;color: var(--info);" v-on:click="increase({{$menu->id}})">add_circle_outline</i>
 								</div>
 						    </div>					
-						</p>
+						</div>
 					</div>
 				</div>
 				@endif

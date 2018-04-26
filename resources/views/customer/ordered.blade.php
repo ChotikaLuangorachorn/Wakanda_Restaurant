@@ -16,7 +16,7 @@
 			<h4>กำลังรอ</h4>
 			<table class="table table-hover">
 				<thead>
-					<tr class="table-light">
+					<tr class="table-info">
 				    	<th scope="col">รายการอาหาร</th>
 				    	<th scope="col">จำนวน</th>
 				    	<th scope="col">ใบเสร็จที่</th>
@@ -42,7 +42,7 @@
 			<table class="table table-hover">
 				<table class="table table-hover">
 				<thead>
-					<tr class="table-light">
+					<tr class="table" style="background-color: var(--pink);color: var(--white);">
 				    	<th scope="col">รายการอาหาร</th>
 				    	<th scope="col">จำนวน</th>
 				    	<th scope="col">ใบเสร็จที่</th>

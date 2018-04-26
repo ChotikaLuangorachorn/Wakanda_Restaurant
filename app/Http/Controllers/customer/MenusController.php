@@ -21,7 +21,7 @@ class MenusController extends Controller
     public function index(Dining_table $dining_table)
     {
         // $this->table_id = $dining_table->id;
-        $menus = Menu::all()->keyBy('id');
+        $menus = Menu::where('status','sell')->get()->keyBy('id');
         $categories = Category::all();
         // $categories = Category::all();
         // return $user;
