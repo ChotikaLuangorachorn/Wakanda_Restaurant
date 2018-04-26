@@ -91,6 +91,9 @@
 						@if ($menu->image_path!='')
 						<div id='img-menu' style="width: 100%;height: 150px;background: url(/images/menu/{{$menu->image_path}});background-repeat: no-repeat;background-size: cover;background-position: center">
 						</div>
+						@else
+						<div id='img-menu' style="width: 100%;height: 150px;background: url(/images/menu/no_image.jpg);background-repeat: no-repeat;background-size: cover;background-position: center">
+						</div>
 						@endif
 						<div class="card-text">
 							<p>{{number_format($menu->price,2)}} บาท</p>
