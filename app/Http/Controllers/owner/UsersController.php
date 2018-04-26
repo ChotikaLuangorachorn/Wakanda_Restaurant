@@ -15,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+      $users = User::all();
+      return view('owner.staff.index', ['users'=>$users]);
     }
 
     /**
@@ -25,7 +26,12 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+      $roles = [
+          "chef" => "Chef",
+          "waiter" => "Waiter",
+          "owner" => "Owner"
+      ];
+      return view('owner.staff.create', ['roles'=>$roles]);
     }
 
     /**
@@ -36,7 +42,26 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      try{
+        $validatedData = $request->validate([
+            'firstname' => 'required|unique:users,firstname',
+            'lastname' => 'required',
+            'password' => 'required|confirmed',
+            'email' => 'required|email'
+        ]);
+
+        $user = new User;
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->password = bcrypt($request->input('password'));
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->save();
+        return redirect('/users/' . $user->id);
+        // return back()->withInput();
+      }catch (Exception $e) {
+        return back()->withInput();
+      }
     }
 
     /**
@@ -47,7 +72,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+      return view('owner.staff.show', ['user'=>$user]);
     }
 
     /**
@@ -58,7 +83,13 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+      $roles = [
+          "chef" => "Chef",
+          "waiter" => "Waiter",
+          "owner" => "Owner"
+      ];
+      return view('owner.staff.edit', ['user'=>$user,
+                                  'roles'=>$roles]);
     }
 
     /**
@@ -70,7 +101,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+      $validatedData = $request->validate([
+          'firstname' => 'required|unique:users,firstname,'.$user->id,
+          'lastname' => 'required',
+          // 'password' => 'required|confirmed',
+          'email' => 'required|email|unique:users,email,'.$user->id,
+      ]);
+
+      $user->firstname = $request->input('firstname');
+      $user->lastname = $request->input('lastname');
+      // $user->password = bcrypt($request->input('password'));
+      $user->email = $request->input('email');
+      $user->role = $request->input('role');
+      $user->save();
+      return redirect('/users/' . $user->id);
     }
 
     /**
@@ -81,6 +125,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+      $user->delete();
+      return redirect('/users');
     }
 }
