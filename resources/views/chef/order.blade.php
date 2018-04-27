@@ -24,11 +24,46 @@ th {
 	<table class="table" id="order-table">
 		<thead class="table-danger">
 			<tr>
-			<th scope="col" onclick="$('#form1').submit();"><form id="form1" method="GET" action="/chef/orders{{ ($orderby=='created_at' && $method=='asc') ? '/created_at/desc' : '' }}">ลำดับ<i class="{{$method=='asc' ? 'asc-icon' : 'desc-icon'}}"></i></form></th>
-			<th scope="col" onclick="$('#form2').submit();"><form id="form2" method="GET" action="/chef/orders/receipt_id{{($orderby=='receipt_id' && $method=='asc') ? '/desc' : ''}}">หมายเลขโต๊ะ</form></th>
-			<th scope="col">รายการอาหารที่สั่ง</th>
-			<th scope="col">จำนวน</th>
-			<th scope="col">สถานะ</th>
+			<th scope="col" onclick="$('#form1').submit();">
+				<form id="form1" method="GET" action="/chef/orders{{ ($orderby=='created_at' && $method=='asc') ? '/created_at/desc' : '' }}">
+					ลำดับที่สั่ง 
+					@if($orderby=='created_at')
+						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
+					@endif
+				</form>
+			</th>
+			<th scope="col" onclick="$('#form2').submit();">
+				<form id="form2" method="GET" action="/chef/orders/receipt_id{{($orderby=='receipt_id' && $method=='asc') ? '/desc' : ''}}">
+					หมายเลขโต๊ะ 
+					@if($orderby=='receipt_id')
+						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
+					@endif
+				</form>
+			</th>
+			<th scope="col" onclick="$('#form3').submit();">
+				<form id="form3" method="GET" action="/chef/orders/menu_id{{($orderby=='menu_id' && $method=='asc') ? '/desc' : ''}}">
+					รายการอาหารที่สั่ง
+					@if($orderby=='menu_id')
+						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
+					@endif
+				</form>
+			</th>
+			<th scope="col" onclick="$('#form4').submit();">
+				<form id="form4" method="GET" action="/chef/orders/amount{{($orderby=='amount' && $method=='asc') ? '/desc' : ''}}">
+					จำนวนที่สั่ง
+					@if($orderby=='amount')
+						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
+					@endif
+				</form>
+			</th>
+			<th scope="col" onclick="$('#form5').submit();">
+				<form id="form5" method="GET" action="/chef/orders/status{{($orderby=='status' && $method=='asc') ? '/desc' : ''}}">
+					สถานะ
+					@if($orderby=='status')
+						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
+					@endif
+				</form>
+			</th>
 			</tr>
 		</thead>
 		<tbody>
