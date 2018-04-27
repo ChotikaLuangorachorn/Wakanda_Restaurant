@@ -6,11 +6,9 @@
 
 @section('content')
 	<div class="row">
-		<div class="col">
-			<p>ตาราง แผนภาพ พวกยอดขาย อาหารยอดฮิต ...</p>
-		</div>
+		
     <table class="table table-hover">
-      <thead>
+      <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Email</th>
@@ -21,7 +19,7 @@
       </thead>
       <tbody>
         @foreach($users as $user)
-          <tr class="table-dark">
+          <tr class="table-light">
             <th scope="row">{{ $loop->iteration }}</th>
             <td>
               <a href="{{ url('/users/' . $user->id) }}">
