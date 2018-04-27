@@ -32,12 +32,12 @@
     </div>
   </nav>
 <!-- content -->
-	<div class="container" style="margin-top:20px;padding-top:10px;background: rgba(131, 226, 134,0.3)">
-		<div class="row" style="text-align:center;margin-top:20px;display:block;">
+	<div class="container">
+		<div class="row" style="text-align:center;display:block;padding:10px 0px;padding-top:20px;background-color: white">
 				@yield('page-title')
 		</div>
 
-		<div class="row" style="display:block;padding:30px">
+		<div class="row" style="display:block">
 		@yield('content')
 		</div>
 	</div>
