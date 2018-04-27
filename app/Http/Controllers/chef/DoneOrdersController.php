@@ -3,22 +3,20 @@
 namespace App\Http\Controllers\chef;
 
 use App\Order;
-use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OrdersController extends Controller
+class DoneOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($orderby = 'created_at', $method = 'asc')
+    public function index()
     {
-        $orders = Order::whereIn('status',['wait', 'cooking'])->orderBy($orderby, $method)->get();
-        $menus = Menu::all()->keyBy('id');
-        return view('chef.order' , compact('orders','menus', 'orderby', 'method'));
+        $orders = Order::where('status','cooked')->orderBy('created_at', 'ASC')->get();
+        return view('chef.doneOrder' , compact('orders'));
     }
 
     /**
@@ -39,10 +37,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request["id"];
-        $order = Order::find($id);
-        $order->status = "cooked";
-        $order->save();
+        //
     }
 
     /**
@@ -76,15 +71,7 @@ class OrdersController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        // $order->status = $request->status;
-        if ($order->status == 'cooking') {
-            $order->status = 'cooked';
-        }
-        else if ($order->status == 'wait') {
-            $order->status = 'cooking';
-        }
-        $order->save();
-        return $order;
+        //
     }
 
     /**

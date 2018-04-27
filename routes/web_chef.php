@@ -2,7 +2,8 @@
 //Chef
 
 //Route::resource('/orders', 'chef\OrdersController@index');
-Route::get('chef/orders', 'chef\OrdersController@index');
+Route::get('chef/orders/{orderby?}/{w?}', 'chef\OrdersController@index')
+->where('orderby', '[a-zA-Z_]+')->where('w', 'desc');
 Route::get('chef/orders/{order}', 'chef\OrdersController@show')
 ->where('order', '[0-9]+');
 Route::get('chef/orders/create', 'chef\OrdersController@create');
@@ -13,6 +14,7 @@ Route::put('chef/orders/{order}', 'chef\OrdersController@update')
 ->where('order', '[0-9]+');
 Route::delete('chef/orders/{order}', 'chef\OrdersController@destroy');
 
+Route::get('chef/doneOrders', 'chef\DoneOrdersController@index');
 
 // Route::get('/chef/{id}', function () {
 //     return view('chef.order');

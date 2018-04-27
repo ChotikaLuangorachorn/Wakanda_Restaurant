@@ -10,6 +10,9 @@
 .my-class {
    font-size: 1.6em;
 }
+th {
+	cursor: pointer;
+}
 /* .container {
   background-color: white;
 } */
@@ -21,7 +24,8 @@
 	<table class="table" id="order-table">
 		<thead class="table-danger">
 			<tr>
-			<th scope="col">หมายเลขโต๊ะ</th>
+			<th scope="col" onclick="$('#form1').submit();"><form id="form1" method="GET" action="/chef/orders{{ ($orderby=='created_at' && $method=='asc') ? '/created_at/desc' : '' }}">ลำดับ<i class="{{$method=='asc' ? 'asc-icon' : 'desc-icon'}}"></i></form></th>
+			<th scope="col" onclick="$('#form2').submit();"><form id="form2" method="GET" action="/chef/orders/receipt_id{{($orderby=='receipt_id' && $method=='asc') ? '/desc' : ''}}">หมายเลขโต๊ะ</form></th>
 			<th scope="col">รายการอาหารที่สั่ง</th>
 			<th scope="col">จำนวน</th>
 			<th scope="col">สถานะ</th>
@@ -30,7 +34,7 @@
 		<tbody>
 			@foreach($orders as $order)
 				<tr class="table-primary" id="{{ $order->id }}">
-				<!-- <th scope="row">{{ $loop->iteration }}</th> -->
+				<td scope="row">{{ $loop->iteration }}</td>
 				<td>{{ $order->receipt->dining_table ?  $order->receipt->dining_table->id: "None" }}</td> 
 				<td>{{ $order->menus ?  $order->menus->name: "None" }}</td> 
 				<td>{{ $order->amount}}</td> 

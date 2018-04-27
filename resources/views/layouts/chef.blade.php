@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('menu-bar')
 	<li class="nav-item">
-	<a class="nav-link" href="#">รายการอาหารที่สั่ง<span class="sr-only">(current)</span></a>
+	<a class="nav-link" href="/chef/orders">รายการอาหารที่สั่ง<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
-    <a class="nav-link" href="#">รายการอาหารที่ทำแล้ว</a>
+    <a class="nav-link" href="/chef/doneOrders">รายการอาหารที่ทำแล้ว</a>
 	</li>
 	<li class="nav-item">
     <a class="nav-link" href="#">จัดการรายการอาหาร</a>
