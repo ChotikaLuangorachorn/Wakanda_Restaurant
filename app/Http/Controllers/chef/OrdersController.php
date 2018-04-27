@@ -16,7 +16,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at', 'ASC')->get();
+        $orders = Order::whereIn('status',['wait', 'cooking'])->orderBy('created_at', 'ASC')->get();
         $menus = Menu::all()->keyBy('id');
         return view('chef.order' , compact('orders','menus'));
     }
@@ -76,7 +76,15 @@ class OrdersController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        // $order->status = $request->status;
+        if ($order->status == 'cooking') {
+            $order->status = 'cooked';
+        }
+        else if ($order->status == 'wait') {
+            $order->status = 'cooking';
+        }
+        $order->save();
+        return $order;
     }
 
     /**

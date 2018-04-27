@@ -5,6 +5,16 @@
 	<h1 class="display-5"> รายการอาหารที่สั่ง</h1>
 	
 @endsection
+@push('css')
+<style>
+.my-class {
+   font-size: 1.6em;
+}
+/* .container {
+  background-color: white;
+} */
+</style>
+@endpush
 
 @section('content')
 	<div id="show-order">
@@ -21,22 +31,45 @@
 			@foreach($orders as $order)
 				<tr class="table-primary" id="{{ $order->id }}">
 				<!-- <th scope="row">{{ $loop->iteration }}</th> -->
-				<th>{{ $order->receipt->dining_table ?  $order->receipt->dining_table->id: "None" }}</th> 
-				<th>{{ $order->menus ?  $order->menus->name: "None" }}</th> 
-				<th>{{ $order->amount}}</th> 
+				<td>{{ $order->receipt->dining_table ?  $order->receipt->dining_table->id: "None" }}</td> 
+				<td>{{ $order->menus ?  $order->menus->name: "None" }}</td> 
+				<td>{{ $order->amount}}</td> 
 				<!-- <th>{{ $order->status }}</th>  -->
-				<th>
-				<form action="/chef/orders" method="post">
+				<td>
+				<!-- <form action="/chef/orders/{{$order->id}}" method="post">
 					@method('PUT')
 					@csrf
-					<button type="button" id="cooking{{$order->id}}" class="btn btn-outline-secondary" v-on:click="changeStatusToCooking({{ $order->id }},{{ $order->menu_id}})">กำลังทำ</button>
+					@if($order->status === 'wait')
+						<label class="btn btn-outline-secondary" for="status_input{{$order->id}}"><input hidden type="submit" class="btn btn-outline-secondary" id="status_input{{$order->id}}" name="status" value="cooking" />กำลังทำ</label>
+					@elseif($order->status === 'cooking')
+						<label class="btn btn-success" for="status_input{{$order->id}}"><input hidden type="submit" class="btn btn-success" id="status_input{{$order->id}}" name="status" value="cooked" />ทำเสร็จแล้ว</label>
+					@endif
+				</form> -->
+					<button type="button" id="status{{$order->id}}" class="btn {{$order->status === 'wait' ? 'btn-outline-secondary' : 'btn-success'}}" v-on:click="changeStatusToCooking({{ $order->id }},{{ $order->menu_id}})">{{$order->status === 'wait' ? 'กำลังทำ' : 'ทำเสร็จแล้ว'}}</button>
+<!-- 				
+					<button {{$order->status === 'wait' ? '' : 'hidden'}} type="button" id="cooking{{$order->id}}" class="btn btn-outline-secondary" v-on:click="changeStatusToCooking({{ $order->id }},{{ $order->menu_id}})">กำลังทำ</button>
+				
+					<button {{$order->status === 'cooking' ? '' : 'hidden'}} type="button" id="cooked{{$order->id}}" class="btn btn-success"  v-on:click="changeStatusToCooked({{ $order->id }},{{ $order->menu_id}})">ทำเสร็จแล้ว</button> -->
+				
+				
+				<!-- <form action="/chef/orders/{{$order->id}}" method="post">
+					@method('PUT')
+					@csrf
+					@if($order->status === 'wait')
+						<button type="button" id="cooking{{$order->id}}" class="btn btn-outline-secondary" v-on:click="changeStatusToCooking({{ $order->id }},{{ $order->menu_id}})">กำลังทำ</button>
+					
+					@endif
+					
 				</form>
 
-				<form>
-					<button type="button" id="cooked{{$order->id}}" class="btn btn-success" hidden v-on:click="changeStatusToCooked({{ $order->id }},{{ $order->menu_id}})">ทำเสร็จแล้ว</button>
-				</form>
+				<form action="/chef/orders" method="post">
+					@csrf
+					@if($order->status === 'cooking')
+						<button type="button" id="cooked{{$order->id}}" class="btn btn-success"  v-on:click="changeStatusToCooked({{ $order->id }},{{ $order->menu_id}})">ทำเสร็จแล้ว</button>
+					@endif
+				</form> -->
 					
-				</th>
+				</td>
 				</tr>
 			@endforeach
 

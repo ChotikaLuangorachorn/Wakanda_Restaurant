@@ -102,18 +102,33 @@ var order = new Vue({
             console.log(menus[menu_id].name);
             console.log(csrf_token);
             $('#modal-title').text(menus[menu_id].name);
-            $('#modal-text').text($('#cooking' + id).text() + 'ใช่หรือไม่ ?');
+            $('#modal-text').text($('#status' + id).text() + 'ใช่หรือไม่ ?');
             document.getElementById('confirm-modal').style.display = "block";
-            $('#save').click(function (e) {
-                $('#cooked' + id).removeAttr('hidden');
-                $('#cooking' + id).hide();
+            $('#save').off('click');
+            $('#save').on('click', function (e) {
+                // $('#cooked' + id).removeAttr('hidden');
+                // $('#cooking' + id).hide();
                 document.getElementById("confirm-modal").style.display = "none";
                 $.ajax({
-                    method: "post",
-                    url: "/chef/orders/",
+                    method: "put",
+                    url: "/chef/orders/" + id,
                     data: {
-                        _token: csrf_token,
-                        id: id
+                        _token: csrf_token
+                    },
+                    success: function success(order) {
+                        console.log(order);
+                        if (order.status === 'cooking') {
+                            $('#status' + id).html('ทำเสร็จแล้ว');
+                            $('#status' + id).attr('class', 'btn btn-success');
+                            console.log('cooking');
+                        } else if (order.status === 'wait') {
+                            $('#status' + id).html('กำลังทำ');
+                            $('#status' + id).attr('class', 'btn btn-outline-secondary');
+                            console.log('wait');
+                        } else if (order.status === 'cooked') {
+                            $('table#order-table tr#' + id).remove();
+                            console.log('cooked');
+                        }
                     }
                 });
             });
