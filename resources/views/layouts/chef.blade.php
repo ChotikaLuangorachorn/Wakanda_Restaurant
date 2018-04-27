@@ -13,11 +13,14 @@
 
 @section('page-title')
 	<div class="jumbotron">
+		<div class="row" style="text-align:center;display:block;padding:10px 0px;padding-top:20px;background-color: white">
 
-		@yield('page-title')
+			@yield('page-title')
+		</div>
 	</div>	
 @endsection
 
 @section('content')
+<div class="row" style="display:block">
 	@yield('content')
 @endsection
