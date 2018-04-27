@@ -6,6 +6,7 @@ use App\Order;
 use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -16,9 +17,18 @@ class OrdersController extends Controller
      */
     public function index($orderby = 'created_at', $method = 'asc')
     {
-        $orders = Order::whereIn('status',['wait', 'cooking'])->orderBy($orderby, $method)->get();
+        $orders2 = DB::table('orders')
+        ->join('receipts', 'orders.receipt_id', '=', 'receipts.id')
+        ->join('menus', 'orders.menu_id', '=', 'menus.id')
+        ->select('orders.*', 'receipts.table_id', 'menus.name')
+        ->whereIn('orders.status',['wait', 'cooking'])
+        ->orderBy($orderby, $method)
+        ->get();        
+        $orders = Order::hydrate( $orders2->toArray() );
+        // $orders = Order::whereIn('status',['wait', 'cooking'])->orderBy($orderby, $method)->get();
+
         $menus = Menu::all()->keyBy('id');
-        return view('chef.order' , compact('orders','menus', 'orderby', 'method'));
+        return view('chef.order' , compact('orders', 'orders2','menus', 'orderby', 'method'));
     }
 
     /**

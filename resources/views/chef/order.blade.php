@@ -22,7 +22,7 @@ th {
 @section('content')
 	<div id="show-order">
 	<table class="table" id="order-table">
-		<thead class="table-danger">
+		<thead class="table-success">
 			<tr>
 			<th scope="col" onclick="$('#form1').submit();">
 				<form id="form1" method="GET" action="/chef/orders{{ ($orderby=='created_at' && $method=='asc') ? '/created_at/desc' : '' }}">
@@ -33,17 +33,17 @@ th {
 				</form>
 			</th>
 			<th scope="col" onclick="$('#form2').submit();">
-				<form id="form2" method="GET" action="/chef/orders/receipt_id{{($orderby=='receipt_id' && $method=='asc') ? '/desc' : ''}}">
+				<form id="form2" method="GET" action="/chef/orders/table_id{{($orderby=='table_id' && $method=='asc') ? '/desc' : ''}}">
 					หมายเลขโต๊ะ 
-					@if($orderby=='receipt_id')
+					@if($orderby=='table_id')
 						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
 					@endif
 				</form>
 			</th>
 			<th scope="col" onclick="$('#form3').submit();">
-				<form id="form3" method="GET" action="/chef/orders/menu_id{{($orderby=='menu_id' && $method=='asc') ? '/desc' : ''}}">
+				<form id="form3" method="GET" action="/chef/orders/name{{($orderby=='name' && $method=='asc') ? '/desc' : ''}}">
 					รายการอาหารที่สั่ง
-					@if($orderby=='menu_id')
+					@if($orderby=='name')
 						<i class="fas {{ $method=='asc' ? 'fa-angle-down' : 'fa-angle-up'}}"></i>
 					@endif
 				</form>
