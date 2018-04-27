@@ -1,11 +1,8 @@
 @extends('layouts.customer')
 
 @section('page-title')
-	<div class="col-sm-10">
+	<div class="col-sm-12">
 		<h2><i class="fas fa-utensils"></i> รายการอาหาร</h2>
-		
-	</div>
-	<div class="col-sm-2" style="text-align: right;">
 		<i class="btn fas fa-shopping-basket"  style="color:var(--pink); font-size: 36px;"></i>
 	</div>
 
