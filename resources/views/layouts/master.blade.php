@@ -33,13 +33,13 @@
   </nav>
 <!-- content -->
 	<div class="container">
-		<div class="row">
+		<div class="row" style="text-align:center;display:block;padding:10px 0px;padding-top:20px;background-color: white">
 				@yield('page-title')
 		</div>
 
-		<!-- <div class="row"> -->
+		<div class="row" style="display:block">
 		@yield('content')
-		<!-- </div> -->
+		</div>
 	</div>
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")

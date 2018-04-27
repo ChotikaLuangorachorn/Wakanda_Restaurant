@@ -2,7 +2,7 @@
 
 @section('page-title')
 
-	<h1 class="display-5"> รายการอาหารที่สั่ง</h1>
+		<h1> รายการอาหารที่สั่ง</h1>
 	
 @endsection
 @push('css')
