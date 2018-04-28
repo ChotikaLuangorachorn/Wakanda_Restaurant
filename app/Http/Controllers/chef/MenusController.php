@@ -72,9 +72,20 @@ class MenusController extends Controller
      * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
-    {
-        //
+    public function update(Request $request, $categoryNo)
+    {    
+        $validatedData = $request->validate([
+        'menu' => 'required'
+        ]);
+        // return $request;
+        $menu = Menu::find($request->menu);
+        if ($menu->status == "sell") {
+            $menu->status = "not sell";
+        } else if ($menu->status == "not sell") {
+            $menu->status = "sell";
+        }
+        $menu->save();
+        return redirect('/chef/menus/'.$categoryNo);
     }
 
     /**

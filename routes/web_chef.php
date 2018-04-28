@@ -22,6 +22,9 @@ Route::get('chef/menus/{categoryNo}', 'chef\MenusController@index')
 Route::get('chef/menus/{menu}', 'chef\MenusController@show')
 ->where('menu', '[0-9]+');
 
+Route::put('/chef/menus/{categoryNo}', 'chef\MenusController@update')
+->where('categoryNo', '[0-9]+');
+
 // Route::get('/chef/{id}', function () {
 //     return view('chef.order');
 // })->where('id','[0-9]+');

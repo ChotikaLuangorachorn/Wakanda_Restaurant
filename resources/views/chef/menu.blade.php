@@ -9,7 +9,7 @@
 .my-class {
    font-size: 1.6em;
 }
-th {
+i {
 	cursor: pointer;
 }
 /* .container {
@@ -24,9 +24,14 @@ th {
         <div class="card border-primary mb-3" style="max-width: 100%;" >
             <div class="card-header">Sell</div>
                 <div class="card-body" >
+                <form id="form1" action="/chef/menus/{{$categoryNo}}" method="POST">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                    @csrf
+                    @method('PUT')
                     @foreach($menus as $menu)
                         @if($categoryNo == $menu->category_id && $menu->status === 'sell')
-                            <div class="card border-primary mb-3 .d-inline-block" style=" display: inline-block; width: 45%; margin-right: 2%;" >
+                        <label for="menu{{$menu->id}}" class="btn btn-outline-success" style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
+                            <div class="card border-primary .d-inline-block">
                                 <div class="card-header" >{{$menu->name}}</div>
                                 <div class="card-body">
                                 @if ($menu->image_path!='')
@@ -39,9 +44,12 @@ th {
 
                                 </div>
                             </div>
-
+                            <input hidden type="radio" name="menu" id="menu{{$menu->id}}" value="{{$menu->id}}">
+                        </label>
                         @endif
                     @endforeach
+                    </div>
+                </form>
                 </div>
                     
                         
@@ -50,8 +58,8 @@ th {
     </div>
 
 
-    <div class="col-md-2">
-    <i class="fas fa-arrow-alt-circle-right"></i>
+    <div class="col-md-2"  style="text-align:center;">
+    <i class="fas fa-arrow-alt-circle-right th" onclick="$('#form1').submit();" style="font-size:100px; margin-top: 150px;"></i>
     </div>
 
 
