@@ -34,7 +34,7 @@ i {
 <div class="row">
     <div class="col-md-5">
         <div class="card border-primary mb-3" style="max-width: 100%;" >
-            <div class="card-header">Sell</div>
+            <div class="card-header">ขาย</div>
                 <div class="card-body" >
                 <form id="form1" action="/chef/menus/{{$categoryNo}}" method="POST">
                     <div class="btn-group-toggle" data-toggle="buttons">
@@ -76,7 +76,7 @@ i {
 
     <div class="col-md-5">
         <div class="card border-secondary mb-3" style="max-width: 100%;" >
-            <div class="card-header">Not sell</div>
+            <div class="card-header">ไม่ขาย</div>
             <div class="card-body">
             <form id="form2" action="/chef/menus/{{$categoryNo}}" method="POST">
                 <div class="btn-group-toggle" data-toggle="buttons">
