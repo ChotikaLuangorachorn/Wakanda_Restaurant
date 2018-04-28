@@ -16,7 +16,8 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<table id="ordering-table">
+					<div style="background-color: var(--gray);height: 300px;overflow-y: scroll;">
+					<table id="ordering-table" >
 	                    <thead>
 	                        <tr style="text-align: center;">
 	                            <th onclick="" scope="col" style="width: 250px;">รายการอาหาร</th>
@@ -26,7 +27,7 @@
 	                    </thead>
 	                    <tbody id='tbody-ordering'>
 	                    </tbody>
-	                </table>
+	                </table></div>
 	                <br>
 	                <b class="float-left">ราคารวม <span id="total_price">0</span> บาท</b>
 					<button type="button" class="btn btn-secondary float-right" id="btn-purchase">ชำระเงิน</button>
@@ -76,9 +77,9 @@
 
 @section('content')
 <!-- category -->
-	<div class="row" id="btn-category" style="text-align: center;padding: 10px;">
+	<div class="row" id="btn-category" style="text-align: center;">
 		@foreach($categories as $category)
-		<div class="col">
+		<div class="col" style="padding: 5px;">
 			<button type="button" class="btn btn-warning" id='btn-category{{$category->id}}' value="category{{$category->id}}" v-on:click="showMenu({{$category->id}})" style="color: var(--gray-dark);">{{$category->name}}</button>
 		</div>
 		@endforeach
@@ -91,10 +92,10 @@
 				{{ $menu->name }} <br>
 			@endforeach
 		</div> -->
-		<div class="row" id="card-category{{$category->id}}">
+		<div class="row" id="card-category{{$category->id}}" style="margin: 10px;">
 			@foreach($menus as $menu)
 				@if ($menu->category_id==$category->id)
-				<div class="card border-danger mb-3" style="text-align: center;max-width: 20rem;margin: 10px;">
+				<div class="card border-danger mb-3" style="text-align: center;width: 15rem;margin: 10px;">
 					<div class="card-header bg-danger">{{$menu->name}}</div>
 					<div class="card-body">
 						<!-- <h4 class="card-title"></h4> -->
