@@ -8,4 +8,6 @@ Route::get('waiter/manageTable',function(){
 });
 
 Route::get('/waiter/serve', 'waiter\OrdersController@index');
+Route::post('/waiter/serve', 'waiter\OrdersController@update');
 Route::get('/waiter/manageTable', 'waiter\DiningTablesController@index');
+Route::post('/waiter/manageTable', 'waiter\DiningTablesController@update');
