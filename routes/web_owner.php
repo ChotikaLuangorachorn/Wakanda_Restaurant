@@ -6,3 +6,6 @@ Route::get('/owner/{id}', function () {
 
 //staff
 Route::resource('/users' ,'owner\UsersController');
+
+//menu
+Route::resource('/menus' ,'owner\MenusController');
