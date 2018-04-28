@@ -7,7 +7,12 @@
     <a class="nav-link" href="/chef/doneOrders">รายการอาหารที่ทำแล้ว</a>
 	</li>
 	<li class="nav-item">
-    <a class="nav-link" href="#">จัดการรายการอาหาร</a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">จัดการรายการอาหาร</a>
+		<div class="dropdown-menu" x-placement="bottom-start" style=" will-change: transform; top: 0px; left: 33%; transform: translate3d(0px, 42px, 0px);">
+			@foreach($categories as $cat)
+				<a class="dropdown-item" href="/chef/menus/{{$cat->id}}">{{ $cat->name }}</a>
+			@endforeach
+    	</div>
 	</li>
 @endsection
 

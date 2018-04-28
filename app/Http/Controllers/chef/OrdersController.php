@@ -4,6 +4,7 @@ namespace App\Http\Controllers\chef;
 
 use App\Order;
 use App\Menu;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +26,11 @@ class OrdersController extends Controller
         ->orderBy($orderby, $method)
         ->get();        
         $orders = Order::hydrate( $orders2->toArray() );
+        $categories = Category::all();
         // $orders = Order::whereIn('status',['wait', 'cooking'])->orderBy($orderby, $method)->get();
 
         $menus = Menu::all()->keyBy('id');
-        return view('chef.order' , compact('orders', 'orders2','menus', 'orderby', 'method'));
+        return view('chef.order' , compact('orders', 'orders2','menus', 'orderby', 'method', 'categories'));
     }
 
     /**

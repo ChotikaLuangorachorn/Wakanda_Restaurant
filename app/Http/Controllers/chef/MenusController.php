@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\chef;
 
 use App\Menu;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,9 +14,12 @@ class MenusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($categoryNo = 1)
     {
-        //
+        $menus = Menu::all()->keyBy('id');
+        $categories = Category::all();
+        return view('chef.menu', compact('menus', 'categories', 'categoryNo'));
+    
     }
 
     /**

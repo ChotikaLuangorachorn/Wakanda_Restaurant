@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\chef;
 
 use App\Order;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class DoneOrdersController extends Controller
     public function index()
     {
         $orders = Order::where('status','cooked')->orderBy('created_at', 'ASC')->get();
-        return view('chef.doneOrder' , compact('orders'));
+        $categories = Category::all();
+        return view('chef.doneOrder' , compact('orders', 'categories'));
     }
 
     /**
