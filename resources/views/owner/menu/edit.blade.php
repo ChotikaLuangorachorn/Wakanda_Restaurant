@@ -67,7 +67,7 @@
 		</div>
 		  
 		<div class="form-group">
-			<label for="image">รูปภาพ: </label>
+			<label for="image">รูปภาพ: (สามารถเว้นว่างไว้ได้กรณีที่ไม่ต้องการเปลี่ยน)</label>
 			<input class="form-control" type="file" name="image" value="{{ old('image') }}">
 		</div>
 

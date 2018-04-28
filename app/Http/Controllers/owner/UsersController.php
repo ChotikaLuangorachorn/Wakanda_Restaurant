@@ -58,7 +58,6 @@ class UsersController extends Controller
         $user->role = $request->input('role');
         $user->save();
         return redirect('/users/' . $user->id);
-        // return back()->withInput();
       }catch (Exception $e) {
         return back()->withInput();
       }
