@@ -25,15 +25,11 @@
       <ul class="navbar-nav mr-auto">
         @yield('menu-bar')
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
     </div>
   </nav>
 <!-- content -->
 	<div class="container">
-		<div class="row" style="text-align:center;display:block;padding:10px 0px;padding-top:20px;background-color: white">
+		<div class="row" style="text-align:center;display:block;padding:10px 0px;padding-top:20px;">
 				@yield('page-title')
 		</div>
 
