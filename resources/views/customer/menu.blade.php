@@ -71,7 +71,7 @@
 		@endforeach
 	</div>
 
-	<div id="menu-list">
+	<div id="menu-list" style="background: red;">
 	@foreach($categories as $category)
 		<!-- <div class="col">
 			@foreach($menus as $menu)
