@@ -12,6 +12,18 @@
 i {
 	cursor: pointer;
 }
+.textoverflow{
+    white-space : nowrap;
+    overflow : hidden;
+    text-overflow: ellipsis;
+}
+.textoverflow:hover{
+    overflow: visible;
+}
+.breaktext{
+    word-wrap: break-word;
+}
+
 /* .container {
   background-color: white;
 } */
@@ -30,7 +42,7 @@ i {
                     @method('PUT')
                     @foreach($menus as $menu)
                         @if($categoryNo == $menu->category_id && $menu->status === 'sell')
-                        <label for="menu{{$menu->id}}" class="btn btn-outline-success" style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
+                        <label for="menu{{$menu->id}}" class="btn btn-outline-success " style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
                             <div class="card border-primary .d-inline-block">
                                 <div class="card-header" >{{$menu->name}}</div>
                                 <div class="card-body">
@@ -72,9 +84,9 @@ i {
                 @method('PUT')
                 @foreach($menus as $menu)
                     @if($categoryNo == $menu->category_id && $menu->status === 'not sell')
-                        <label for="menu{{$menu->id}}" class="btn btn-outline-secondary" style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
+                        <label for="menu{{$menu->id}}" class="btn btn-outline-secondary " style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
                             <div class="card border-secondary .d-inline-block">
-                                <div class="card-header" >{{$menu->name}}</div>
+                                <div class="card-header breaktext" >{{$menu->name}}</div>
                                 <div class="card-body">
                                     @if ($menu->image_path!='')
                                         <div id='img-menu' style="width: 100%;height: 130px;background: url(/images/menu/{{$menu->image_path}});background-repeat: no-repeat;background-size: cover;background-position: center"></div>
