@@ -31,26 +31,39 @@
 	                <b class="float-left">ราคารวม <span id="total_price">0</span> บาท</b>
 					<button type="button" class="btn btn-secondary float-right" id="btn-purchase">ชำระเงิน</button>
 				</div>
-				<div class="modal-footer row">
-					<div class="col-sm-9" style="margin:0 auto; text-align: center;">
-						<form action="/customer/{{$dining_table->id}}" id='form-purchase' method="post">
-							 {{ csrf_field() }}
-							@if ($errors->any())
-							    <div class="alert alert-warning" style="text-align: left;">
-							        <ul>
-							            @foreach ($errors->all() as $error)
-							                <li>{{ $error }}</li>
-							            @endforeach
-							        </ul>
-							    </div>
-							@endif							 
-							<input name="order" id="order" type="text" value="" hidden="true">
-							<input class='form-control' type="number" name="cardNumber" maxlength="16" placeholder='Card Number' value="{{ old('cardNumber') }}">
-							<input class='form-control' id="month" type="month" name='exp' placeholder='Expire Date' value="{{ old('exp') }}">
-							<input class='form-control' type="number" name="cvv" maxlength="3" placeholder='CVV' value="{{ old('cvv') }}"><hr>
-							<button type="submit" id="btn-submit-purchase" class="btn btn-primary">ยืนยันการชำระเงิน</button>
-						</form>
-					</div>
+	    	</div>
+		</div>
+	</div>
+	<div class="modal" id="modal-purchase">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		    		<h5 class="modal-title">กรอกข้อมูลเพื่อชำระเงิน</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('modal-purchase').style.display='none'">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="/customer/{{$dining_table->id}}" id='form-purchase' method="post">
+						 {{ csrf_field() }}
+						@if ($errors->any())
+						    <div class="alert alert-warning" style="text-align: left;">
+						        <ul>
+						            @foreach ($errors->all() as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif							 
+						<input name="order" id="order" type="text" value="" hidden="true">
+						<label>Card Number</label>
+						<input class='form-control' type="number" name="cardNumber" maxlength="16" placeholder='Card Number' value="{{ old('cardNumber') }}">
+						<label>Expire Date</label>
+						<input class='form-control' id="month" type="month" name='exp' placeholder='Expire Date' value="{{ old('exp') }}">
+						<label>CVV</label>
+						<input class='form-control' type="number" name="cvv" maxlength="3" placeholder='CVV' value="{{ old('cvv') }}"><hr>
+						<button type="submit" id="btn-submit-purchase" class="btn btn-primary">ยืนยันการชำระเงิน</button>
+					</form>
 				</div>
 	    	</div>
 		</div>
@@ -63,7 +76,7 @@
 
 @section('content')
 <!-- category -->
-	<div class="row" id="btn-category" style="text-align: center;">
+	<div class="row" id="btn-category" style="text-align: center;padding: 10px;">
 		@foreach($categories as $category)
 		<div class="col">
 			<button type="button" class="btn btn-warning" id='btn-category{{$category->id}}' value="category{{$category->id}}" v-on:click="showMenu({{$category->id}})" style="color: var(--gray-dark);">{{$category->name}}</button>
@@ -71,7 +84,7 @@
 		@endforeach
 	</div>
 
-	<div id="menu-list" style="background: red;">
+	<div id="menu-list">
 	@foreach($categories as $category)
 		<!-- <div class="col">
 			@foreach($menus as $menu)
@@ -81,7 +94,7 @@
 		<div class="row" id="card-category{{$category->id}}">
 			@foreach($menus as $menu)
 				@if ($menu->category_id==$category->id)
-				<div class="card border-danger mb-3" style="text-align: center;max-width: 20rem; margin: 10px;">
+				<div class="card border-danger mb-3" style="text-align: center;max-width: 20rem;margin: 10px;">
 					<div class="card-header bg-danger">{{$menu->name}}</div>
 					<div class="card-body">
 						<!-- <h4 class="card-title"></h4> -->

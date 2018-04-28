@@ -40,6 +40,6 @@
   <script src="/js/app.js" charset="utf-8"></script>
   @stack("js")
 <!-- footer -->
-<!--   <footer>Wakanda Restaurant</footer> -->
+  <footer>Wakanda Restaurant</footer>
 </body>
 </html>
