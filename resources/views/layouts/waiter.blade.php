@@ -9,7 +9,7 @@
 @endsection
 
 @section('page-title')
-<div class="border border-info rounded offset-1 m-5">
+<div class="">
 	<h1 class="display-5">
 		@yield('page-title-waiter')
 	</h1>

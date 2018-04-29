@@ -1,7 +1,8 @@
 @extends('layouts.waiter')
 
 @section('page-title-waiter')
-  จัดการโต๊ะ
+  จัดการโต๊ะ <br>
+  <small class="blockquote-footer">มีโต๊ะว่าง <b class="text-danger">{{$countEmptyTable}}</b> โต๊ะ </small>
 @endsection
 
 @section('content')
@@ -10,13 +11,12 @@
     <div class="card mb-3 " style="text-align:center;width: 22rem; margin: 10px;min-height:20rem">
       <div class="card-header justify-content-between d-flex align-items-center">
         โต๊ะที่: {{$dining_table->id}}
-
         {{-- {{route('waiter.DiningTablesController@count', ['dining_table' => $dining_table])}} --}}
-        <span class="badge badge-warning badge-pill">{{$dining_table->receipts->count()}}</span>
+        <span class="badge badge-warning badge-pill">receipt {{$dining_table->receipts->count()}}</span>
       </div>
 
       <div class="card-body ">
-        @if($dining_table->receipts->count() != 0)
+        @if($dining_table->receipts->count() != 0 and $dining_table->status == 'busy')
         <table class="table">
           <thead>
             <tr class="table-danger">
@@ -42,12 +42,17 @@
           </tbody>
 
         </table>
+        @elseif($dining_table->status == 'empty')
+          โต๊ะว่าง
         @else
-          no
+          ยังไม่ได้สั่งอาหาร
         @endif
       </div>
       <div class="card-footer" style="text-align:right">
-        <button type="button" class="btn btn-primary" name="button">clear table</button>
+        <form action="/waiter/manageTable" method="post">
+          @csrf
+          <button type="submit" class="btn btn-primary" name="clearbtn" value="{{$dining_table->id}}">clear table</button>
+        </form>
       </div>
     </div>
   @endforeach

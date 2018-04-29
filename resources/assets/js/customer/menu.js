@@ -79,7 +79,6 @@ $('#btn-go-to-top').click(function(e){
 //modal basket
 $('.fa-shopping-basket').click(function(e){
 	document.getElementById('modal-basket').style.display='block';
-	$('#form-purchase').hide();
 	showOrderingTable();
 	$("#order").val(JSON.stringify(selectNumber.order));
 });
@@ -107,7 +106,7 @@ function showOrderingTable(){
 	}
 };
 $('#btn-purchase').click(function(e){
-	$('#form-purchase').show();
+	document.getElementById('modal-purchase').style.display='block';
 });
 // $("#btn-purchase").click(function(e){
 // 	console.log("purchase");
