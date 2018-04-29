@@ -11,4 +11,5 @@ Route::resource('/users' ,'owner\UsersController');
 Route::resource('/menus' ,'owner\MenusController');
 
 //report 
-Route::get('report','owner\ReportsController@dailyReport');
+Route::get('report','owner\ReportsController@allReport');
+Route::post('report','owner\ReportsController@dailyReport');
