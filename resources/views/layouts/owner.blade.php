@@ -11,6 +11,12 @@
 	</li>
 @endsection
 
+@section('btn-login-logout')
+	<button type="button" class="btn btn-secondary">
+		<a class="btn" href="/home">ออกจากระบบ</a>
+	</button>
+@endsection
+
 @section('page-title')
 	@yield('page-title')
 @endsection
