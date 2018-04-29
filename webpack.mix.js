@@ -16,4 +16,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/chef/order.js', 'public/js/chef')
     .js('resources/assets/js/chef/menu.js', 'public/js/chef')
     .js('resources/assets/js/owner/report.js', 'public/js/owner')
+    .js('resources/assets/js/home/home.js', 'public/js/home')
    .sass('resources/assets/sass/app.scss', 'public/css');

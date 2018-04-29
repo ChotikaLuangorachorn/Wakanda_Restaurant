@@ -1,5 +1,3 @@
 <?php 
 //Home
-Route::get('/home', function () {
-    return view('home.home');
-});
+Route::get('/home', 'home\DiningTablesController@index');

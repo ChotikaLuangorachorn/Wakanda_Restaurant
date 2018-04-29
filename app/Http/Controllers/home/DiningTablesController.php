@@ -15,7 +15,8 @@ class DiningTablesController extends Controller
      */
     public function index()
     {
-        //
+        $dining_tables = Dining_table::all();
+        return view('home.home',['dining_tables'=>$dining_tables]);
     }
 
     /**
