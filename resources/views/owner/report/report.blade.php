@@ -22,17 +22,20 @@
 					</ul>
 				</div>
 			@endif
-			<div class="form-group">
-				<label>ค้นหาตาม: </label>
-				<select class="form-control" name="role">	
-					<option value="all" selected>ทั้งหมด</option>	
-					<option value="date">ตามวันที่</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="password_confirmation">Confirm Password: </label>
-				<input class="form-control" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}">
+			<div id="select-date">
+				@{{ message }}
+				<div class="form-group">
+					<label>ค้นหาตาม: </label>
+					<select class="form-control" v-model="selected" name="search_by">	
+						<option value="all" selected>ทั้งหมด</option>	
+						<option value="date">ตามวันที่</option>
+					</select>
+				</div>
+				
+				<div class="form-group" v-if="isShowDate">
+					<label for="date">เลือกวันที่: </label>
+					<input class="form-control" type="date" name="date" value="{{ old('date') }}">
+				</div>
 			</div>
 			
 			<div class="form-group row">
