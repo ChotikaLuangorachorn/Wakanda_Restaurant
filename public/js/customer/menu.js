@@ -76,7 +76,7 @@ module.exports = __webpack_require__(45);
 /***/ 45:
 /***/ (function(module, exports) {
 
-
+$('#form-logout').hide();
 console.log(categories);
 if (categories.length != 0) {
 	for (index in categories) {
