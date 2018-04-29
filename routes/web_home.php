@@ -1,5 +1,5 @@
 <?php 
 //Home
 Route::get('/home', function () {
-    return view('home.main');
+    return view('home.home');
 });

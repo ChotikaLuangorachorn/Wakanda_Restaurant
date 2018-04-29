@@ -24,7 +24,11 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         @yield('menu-bar')
+
       </ul>
+      <form id="form-logout" class="form-inline my-2 my-lg-0">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">ออกจากระบบ</button>
+      </form>
     </div>
   </nav>
 <!-- content -->
