@@ -128,8 +128,8 @@ th {
 			<p id="modal-text"></p>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-primary" id="save">ยืนยัน</button>
-			<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='document.getElementById("confirm-modal").style.display="none";'>ยกเลิก</button>
+			<button type="button" class="btn btn-primary" id="save">ใช่</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='document.getElementById("confirm-modal").style.display="none";'>ไม่</button>
 		</div>
 		</div>
 	</div>

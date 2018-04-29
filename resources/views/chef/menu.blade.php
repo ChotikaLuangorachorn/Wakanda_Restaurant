@@ -17,9 +17,9 @@ i {
     overflow : hidden;
     text-overflow: ellipsis;
 }
-.textoverflow:hover{
+/* .textoverflow:hover{
     overflow: visible;
-}
+} */
 .breaktext{
     word-wrap: break-word;
 }
@@ -31,6 +31,7 @@ i {
 @endpush
 
 @section('content')
+<button id="btn-go-to-top" title="Go to top">Top</button>
 <div class="row">
     <div class="col-md-5">
         <div class="card border-primary mb-3" style="max-width: 100%;" >
@@ -44,7 +45,7 @@ i {
                         @if($categoryNo == $menu->category_id && $menu->status === 'sell')
                         <label for="menu{{$menu->id}}" class="btn btn-outline-success " style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
                             <div class="card border-primary .d-inline-block">
-                                <div class="card-header" >{{$menu->name}}</div>
+                                <div class="card-header textoverflow"  title="{{$menu->name}}" >{{$menu->name}}</div>
                                 <div class="card-body">
                                 @if ($menu->image_path!='')
                                     <div id='img-menu' style="width: 100%;height: 130px;background: url(/images/menu/{{$menu->image_path}});background-repeat: no-repeat;background-size: cover;background-position: center"></div>
@@ -86,7 +87,7 @@ i {
                     @if($categoryNo == $menu->category_id && $menu->status === 'not sell')
                         <label for="menu{{$menu->id}}" class="btn btn-outline-secondary " style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
                             <div class="card border-secondary .d-inline-block">
-                                <div class="card-header breaktext" >{{$menu->name}}</div>
+                                <div class="card-header textoverflow"  title="{{$menu->name}}" >{{$menu->name}}</div>
                                 <div class="card-body">
                                     @if ($menu->image_path!='')
                                         <div id='img-menu' style="width: 100%;height: 130px;background: url(/images/menu/{{$menu->image_path}});background-repeat: no-repeat;background-size: cover;background-position: center"></div>
@@ -109,3 +110,7 @@ i {
 
 
 @endsection
+@push("js")
+
+	<script src="/js/chef/menu.js" charset="utf-8"></script>
+@endpush
