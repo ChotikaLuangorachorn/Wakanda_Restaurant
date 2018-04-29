@@ -17,8 +17,8 @@ class DiningTablesController extends Controller
     public function index()
     {
         $dining_tables = Dining_table::where('status','empty')->get();
-        $menus = Menu::orderByRaw("RAND()")->take(5)->get();
-        return view('home.home',['dining_tables'=>$dining_tables, 'menus' => $menus]);
+        $rand_menus =  Menu::where('image_path','<>','')->orderByRaw("RAND()")->take(5)->get();
+        return view('home.home',['dining_tables'=>$dining_tables, 'rand_menus' => $rand_menus]);
     }
 
     /**
