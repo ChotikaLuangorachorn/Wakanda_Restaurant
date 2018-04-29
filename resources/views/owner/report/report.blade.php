@@ -5,11 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="row">
-		<div class="col">
-			<p>ตาราง แผนภาพ พวกยอดขาย อาหารยอดฮิต ...</p>
-		</div>
-	</div>
+	
 	<div>
 		<form class="" action="/report" method="post">
 			@csrf
@@ -25,7 +21,7 @@
 			<div id="select-date">
 				<div class="form-group">
 					<label>ค้นหาตาม: </label>
-					<select class="form-control" id="selectBy" name="search_by">	
+					<select class="form-control" id="selectBy" name="selectBy">	
 						<option value="all" selected>ทั้งหมด</option>	
 						<option value="date">ตามวันที่</option>
 					</select>
@@ -39,7 +35,7 @@
 			
 			<div class="form-group row">
 				<div class="col-sm-6">
-					<button type="submit" class="btn btn-success">Submit</button>
+					<button type="submit" class="btn btn-success">ค้นหา</button>
 				</div>	
 			</div>
 		</form>
@@ -58,16 +54,14 @@
 <script>
 	$(document).ready(function(){
 		$("#date").hide();
-    $('#selectBy').on('change', function() {
-      if ( this.value === 'all')
-      {
-        $("#date").hide();
-      }
-      else
-      {
-        $("#date").show();
-      }
-    });	
+    	$('#selectBy').on('change', function() {
+      		if ( this.value === 'all'){
+        		$("#date").hide();
+      		}
+      		else{
+        		$("#date").show();
+      		}
+    	});	
 	});
 </script>
 @endpush

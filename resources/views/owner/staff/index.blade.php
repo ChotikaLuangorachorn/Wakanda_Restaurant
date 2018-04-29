@@ -12,9 +12,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Email</th>
-          <th scope="col">First name</th>
-          <th scope="col">Last name</th>
-          <th scope="col">Role</th>
+          <th scope="col">ชื่อ</th>
+          <th scope="col">นามสกุล</th>
+          <th scope="col">ตำแหน่ง</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@
     </table>
 
     <div class="">
-  	   <a class="button" href="{{ url('/users/create') }}">Add new staff</a>
+  	   <a class="btn btn-info" href="{{ url('/users/create') }}">เพิ่มพนักงานใหม่</a>
      </div>
 
 	</div>
