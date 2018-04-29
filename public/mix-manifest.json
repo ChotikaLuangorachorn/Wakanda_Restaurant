@@ -1,7 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/owner/report.js": "/js/owner/report.js",
     "/js/home/home.js": "/js/home/home.js",
     "/js/customer/menu.js": "/js/customer/menu.js",
     "/js/chef/order.js": "/js/chef/order.js",

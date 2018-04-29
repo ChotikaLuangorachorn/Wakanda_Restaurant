@@ -76,7 +76,7 @@ module.exports = __webpack_require__(51);
 /***/ 51:
 /***/ (function(module, exports) {
 
-
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\laragon\\www\\Wakanda_Restaurant\\resources\\assets\\js\\owner\\report.js'");
 
 /***/ })
 
