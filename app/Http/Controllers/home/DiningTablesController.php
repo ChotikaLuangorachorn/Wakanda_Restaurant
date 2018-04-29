@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\home;
 
 use App\Dining_table;
+use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +16,9 @@ class DiningTablesController extends Controller
      */
     public function index()
     {
-        $dining_tables = Dining_table::all();
-        return view('home.home',['dining_tables'=>$dining_tables]);
+        $dining_tables = Dining_table::where('status','empty')->get();
+        $menus = Menu::orderByRaw("RAND()")->take(5)->get();
+        return view('home.home',['dining_tables'=>$dining_tables, 'menus' => $menus]);
     }
 
     /**
