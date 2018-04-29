@@ -16,33 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/master', function () {
-//     return view('layouts.master');
-// });
-
 // Customer
 Route::get('/customer/{dining_table}', 'customer\MenusController@index')->where('dining_table','[0-9]+');
 Route::get('/customer/create', 'customer\MenusController@create');
 Route::post('/customer/{dining_table}', 'customer\MenusController@store')->where('dining_table','[0-9]+');
 
 Route::get('/customer/{dining_table}/ordered', 'customer\OrdersController@index')->where('dining_table','[0-9]+');
-
-
-// //Chef
-// Route::get('/chefs/{id}', function () {
-//     return view('chefs.order');
-// })->where('id','[0-9]+');
-// //Waiter
-// Route::get('/waiters/{id}', function () {
-//     return view('waiters.serve_wait_order');
-// })->where('id','[0-9]+');
-// //Owner
-// Route::get('/owners/{id}', function () {
-//     return view('owners.report');
-// })->where('id','[0-9]+');
-// //Home
-// Route::get('/home', function () {
-//     return view('homes.main');
-// });
-
-// include("web_test.php");

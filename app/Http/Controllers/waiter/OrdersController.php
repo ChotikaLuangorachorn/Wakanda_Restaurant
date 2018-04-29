@@ -15,8 +15,10 @@ class OrdersController extends Controller
      */
     public function index()
     {
-      $orders = Order::where('status','=','cooked')->orWhere('status','served')->orderBy('receipt_id')->get();
-      return view('waiter.serve', ['orders' => $orders]);
+      $orders = Order::where('status','=','cooked')->orderBy('receipt_id')->get();
+      $countOrder = Order::where('status','=','cooked')->count();
+      return view('waiter.serve', ['orders' => $orders,
+                                  'countOrder'=> $countOrder]);
     }
 
     /**
@@ -69,10 +71,19 @@ class OrdersController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request)
     {
-        //
+      $orders = Order::where('status','=','cooked')->orderBy('receipt_id')->get();
+      $checkedOrders = $request->input("checkOrder");
+      foreach ($checkedOrders as $checkedOrder) {
+        if (count($order = Order::where('id',$checkedOrder)->first()) > 0){
+          $order->status = "served";
+          $order->save();
+        }
+      }
+      return redirect('/waiter/serve');
     }
+
 
     /**
      * Remove the specified resource from storage.

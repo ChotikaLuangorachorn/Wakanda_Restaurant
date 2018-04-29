@@ -16,7 +16,9 @@ class DiningTablesController extends Controller
     public function index()
     {
         $dining_tables = Dining_table::all();
-        return view('waiter.manageTable', ['dining_tables' => $dining_tables]);
+        $countEmptyTable = Dining_table::where('status','=','empty')->count();
+        return view('waiter.manageTable', ['dining_tables' => $dining_tables,
+                                          'countEmptyTable'=> $countEmptyTable]);
     }
 
     /**
@@ -71,7 +73,10 @@ class DiningTablesController extends Controller
      */
     public function update(Request $request, Dining_table $dining_table)
     {
-        //
+      $dining_table = Dining_table::where('id',$request->input('clearbtn'))->first();
+      $dining_table->status = "empty";
+      $dining_table->save();
+      return redirect('/waiter/manageTable');
     }
 
     /**
