@@ -5,15 +5,16 @@
 @endsection
 
 @section('content')
-	<div class="row justify-content-between align-items-center d-flex pr-5 pl-5 pb-5">
-				ตารางรายการอาหารที่ต้องเสิร์ฟจำนวน {{$countOrder}} รายการ
 
-</div>
 <form action="/waiter/serve" method="post">
 
 	@csrf
 
-	<button class="btn btn-warning btn-lg" type="submit" name="button">ส่ง</button>
+	<div class="row justify-content-between align-items-center d-flex pr-5 pl-5 pb-5">
+				ตารางรายการอาหารที่ต้องเสิร์ฟจำนวน {{$countOrder}} รายการ
+				<button class="btn btn-warning btn-lg" type="submit" name="button" style="right:70%">ส่ง</button>
+	</div>
+
 
 			<table class="table">
   			<thead>
