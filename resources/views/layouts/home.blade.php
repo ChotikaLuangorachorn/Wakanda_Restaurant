@@ -8,9 +8,16 @@
 	</li>
 @endsection
 @section('btn-login-logout')
+	@if(Auth::check())
+	<form action="/logout" method="POST">
+		@csrf
+		<button class="btn btn-secondary" value="submit">sign out</button>
+	</form>
+	@else
 	<button type="button" class="btn btn-secondary">
-		<a class="btn" href="/home">เข้าสู่ระบบ</a>
+		<a class="btn" href="/login">เข้าสู่ระบบ</a>
 	</button>
+	@endif
 @endsection
 
 @section('page-title')

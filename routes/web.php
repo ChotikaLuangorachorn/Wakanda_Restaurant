@@ -22,3 +22,9 @@ Route::get('/customer/create', 'customer\MenusController@create');
 Route::post('/customer/{dining_table}', 'customer\MenusController@store')->where('dining_table','[0-9]+');
 
 Route::get('/customer/{dining_table}/ordered', 'customer\OrdersController@index')->where('dining_table','[0-9]+');
+
+Route::get('/', function(){return redirect('/home');});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
