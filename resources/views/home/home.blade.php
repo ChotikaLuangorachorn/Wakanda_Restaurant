@@ -62,22 +62,27 @@
 	<div class="row" id="detail-empty-table">
 		<div class="col-sm-3" style="margin:auto;text-align: center;">
 			<h4>รายละเอียดโต๊ะว่าง</h4>
-			<table class="table table-hover">
-				<thead>
-					<tr class="table-info">
-				    	<th scope="col">จำนวนที่นั่ง</th>
-				    	<th scope="col">จำนวนโต๊ะ</th>
-				    </tr>
-				</thead>
-				<tbody>
-					@foreach($table_seat as $seat)
-					    <tr class="table-primary">
-					      	<td>{{$seat[0]->seat}}</td>
-					      	<td>{{$seat->count()}}</td>
+			@if ($table_seat->count()!=0)
+				<table class="table table-hover">
+					<thead>
+						<tr class="table-info">
+					    	<th scope="col">จำนวนที่นั่ง</th>
+					    	<th scope="col">จำนวนโต๊ะว่าง</th>
 					    </tr>
-				    @endforeach
-			  	</tbody>
-			</table> 
+					</thead>
+					<tbody>
+						
+						@foreach($table_seat as $seat)
+						    <tr class="table-primary">
+						      	<td>{{$seat[0]->seat}}</td>
+						      	<td>{{$seat->count()}}</td>
+						    </tr>
+					    @endforeach
+				  	</tbody>
+				</table>
+			@else
+				<h5>ไม่มีโต๊ะว่าง</h5>
+			@endif
 		</div>
 	</div>
 

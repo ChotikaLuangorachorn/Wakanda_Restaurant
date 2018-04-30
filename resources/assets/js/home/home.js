@@ -1,4 +1,3 @@
-$('#btn-logout').hide();
 $('#detail-empty-table').hide();
 $('#show-detail').click(function(e){
 	$('#detail-empty-table').toggle();

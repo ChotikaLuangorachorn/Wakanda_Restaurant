@@ -76,7 +76,6 @@ module.exports = __webpack_require__(51);
 /***/ 51:
 /***/ (function(module, exports) {
 
-$('#btn-logout').hide();
 $('#detail-empty-table').hide();
 $('#show-detail').click(function (e) {
 	$('#detail-empty-table').toggle();
