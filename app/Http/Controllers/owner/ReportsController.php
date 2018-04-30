@@ -6,6 +6,7 @@ namespace App\Http\Controllers\owner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use PDF;
 
 class ReportsController extends Controller
 {
@@ -19,7 +20,7 @@ class ReportsController extends Controller
             ]);
             
             $orders = \App\Order::whereDate('created_at', '=', date($request->input('date')))->get();
-            return $this->createChart($orders);
+            return $this->createChart($orders, 'วันที่ ' . $request->input('date'));
         }
     }
 
@@ -30,11 +31,11 @@ class ReportsController extends Controller
         }
         // $this->authorize('isOwner',User::class);
         $orders = \App\Order::all();
-        return $this->createChart($orders);
+        return $this->createChart($orders ,'ทั้งหมด');
         
     }
     
-    function createChart($orders){
+    function createChart($orders ,$type){
         $categories_count = [0,0,0,0];
         /*
         อาหารแต่ละประเภทคือ
@@ -68,7 +69,7 @@ class ReportsController extends Controller
 
 
         $donutchart = \Lava::DonutChart('cate_num', $table, [
-                    'title' => 'จำนวนอาหารที่ขายได้ในแต่ละประเภททั้งหมด'
+                    'title' => 'จำนวนอาหารที่ขายได้ในแต่ละประเภท' . $type 
                 ]);
 
         return view('owner.report.report');

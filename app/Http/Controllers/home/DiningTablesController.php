@@ -18,7 +18,8 @@ class DiningTablesController extends Controller
     {
         $dining_tables = Dining_table::where('status','empty')->get();
         $rand_menus =  Menu::where('image_path','<>','')->orderByRaw("RAND()")->take(5)->get();
-        return view('home.home',['dining_tables'=>$dining_tables, 'rand_menus' => $rand_menus]);
+        $table_seat = Dining_table::where('status','empty')->orderBy('seat','asc')->get()->groupBy('seat');
+        return view('home.home',['dining_tables'=>$dining_tables, 'rand_menus' => $rand_menus, 'table_seat'=> $table_seat]);
     }
 
     /**
