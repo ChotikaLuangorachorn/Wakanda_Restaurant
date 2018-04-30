@@ -88,7 +88,9 @@
 @push('js')
 <script>
 	$(document).ready(function(){
-		$("#date").hide();
+		if ($("#date").value === undefined){
+			$("#date").hide();
+		}
     	$('#selectBy').on('change', function() {
       		if ( this.value === 'all'){
         		$("#date").hide();
@@ -97,8 +99,9 @@
         		$("#date").show();
       		}
 		});	
-		
-		$("#date2").hide();
+		if ($("#date2").value === undefined){
+			$("#date2").hide();
+		}
     	$('#selectBy2').on('change', function() {
       		if ( this.value === 'all'){
         		$("#date2").hide();
