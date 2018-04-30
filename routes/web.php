@@ -25,6 +25,10 @@ Route::get('/', function(){
     if(\Auth::user()) {
         if (\Auth::user()->role === 'owner'){
             return redirect('/report');
+        }else if (\Auth::user()->role === 'chef'){
+            return redirect('/chef/orders');
+        }else if (\Auth::user()->role === 'waiter'){
+            return redirect('/waiter/serve');
         }
     }
     return redirect('/home');
