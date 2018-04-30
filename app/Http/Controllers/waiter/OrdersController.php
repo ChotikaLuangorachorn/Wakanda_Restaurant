@@ -73,10 +73,9 @@ class OrdersController extends Controller
      */
     public function update(Request $request)
     {
-      $orders = Order::where('status','=','cooked')->orderBy('receipt_id')->get();
       $checkedOrders = $request->input("checkOrder");
       foreach ($checkedOrders as $checkedOrder) {
-        if (count($order = Order::where('id',$checkedOrder)->first()) > 0){
+        if (!is_null($order = Order::where('id',$checkedOrder)->first() ) ){
           $order->status = "served";
           $order->save();
         }

@@ -149,5 +149,5 @@ class MenusController extends Controller
         \Storage::disk('public_images')->delete('menu/'.$menu->image_path);
         $menu->delete();
         return redirect('/menus');
-    }
+    }   
 }

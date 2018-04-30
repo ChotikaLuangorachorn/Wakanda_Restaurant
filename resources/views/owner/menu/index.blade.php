@@ -41,7 +41,7 @@
     </table>
 
     <div class="">
-  	   <a class="button" href="{{ url('/menus/create') }}">เพิ่มเมนูใหม่</a>
+  	   <a class="btn btn-info" href="{{ url('/menus/create') }}">เพิ่มเมนูใหม่</a>
      </div>
 
 	</div>

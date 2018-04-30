@@ -16,6 +16,12 @@
 	</li>
 @endsection
 
+@section('btn-login-logout')
+	<button type="button" class="btn btn-secondary">
+		<a class="btn" href="/home">ออกจากระบบ</a>
+	</button>
+@endsection
+
 @section('page-title')
 	<div class="jumbotron">
 		<div class="row" style="text-align:center;display:block;padding:10px 0px;padding-top:20px;background-color: white">

@@ -24,7 +24,9 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         @yield('menu-bar')
+
       </ul>
+        @yield('btn-login-logout')
     </div>
   </nav>
 <!-- content -->

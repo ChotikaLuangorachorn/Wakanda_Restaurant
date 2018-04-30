@@ -5,11 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="row">
-		<div class="col">
-			<p>ตาราง แผนภาพ พวกยอดขาย อาหารยอดฮิต ...</p>
-		</div>
-	</div>
+	
 	<div>
 		<form class="" action="/report" method="post">
 			@csrf
@@ -22,22 +18,24 @@
 					</ul>
 				</div>
 			@endif
-			<div class="form-group">
-				<label>ค้นหาตาม: </label>
-				<select class="form-control" name="role">	
-					<option value="all" selected>ทั้งหมด</option>	
-					<option value="date">ตามวันที่</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="password_confirmation">Confirm Password: </label>
-				<input class="form-control" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}">
+			<div id="select-date">
+				<div class="form-group">
+					<label>ค้นหาตาม: </label>
+					<select class="form-control" id="selectBy" name="selectBy">	
+						<option value="all" selected>ทั้งหมด</option>	
+						<option value="date">ตามวันที่</option>
+					</select>
+				</div>
+				
+				<div class="form-group" id="date">
+					<label for="date">เลือกวันที่: </label>
+					<input class="form-control" type="date" name="date" value="{{ old('date') }}">
+				</div>
 			</div>
 			
 			<div class="form-group row">
 				<div class="col-sm-6">
-					<button type="submit" class="btn btn-success">Submit</button>
+					<button type="submit" class="btn btn-success">ค้นหา</button>
 				</div>	
 			</div>
 		</form>
@@ -52,28 +50,18 @@
 	</div>
 @endsection
 
-{{-- @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+@push('js')
 <script>
-	new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
-});
+	$(document).ready(function(){
+		$("#date").hide();
+    	$('#selectBy').on('change', function() {
+      		if ( this.value === 'all'){
+        		$("#date").hide();
+      		}
+      		else{
+        		$("#date").show();
+      		}
+    	});	
+	});
 </script>
-@endpush --}}
+@endpush

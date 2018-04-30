@@ -90,14 +90,14 @@ class DiningTablesController extends Controller
         //
     }
 
-    public function count(Dining_table $dining_table)
-    {
-        $count = 0;
-        foreach($dining_table->receipts as $receipt){
-          foreach($receipt->orders as $order){
-            $count = $count + 1;
-          }
-        }
-        return $count;
-    }
+    // public function count(Dining_table $dining_table)
+    // {
+    //     $count = 0;
+    //     foreach($dining_table->receipts as $receipt){
+    //       foreach($receipt->orders as $order){
+    //         $count = $count + 1;
+    //       }
+    //     }
+    //     return $count;
+    // }
 }

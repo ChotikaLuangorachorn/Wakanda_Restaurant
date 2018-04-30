@@ -1,4 +1,3 @@
-
 console.log(categories);
 if (categories.length!=0){
 	for (index in categories) {
