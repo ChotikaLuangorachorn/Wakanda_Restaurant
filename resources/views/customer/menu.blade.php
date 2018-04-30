@@ -2,7 +2,8 @@
 
 @section('page-title')
 	<div class="col-sm-12">
-		<h2><i class="fas fa-utensils"></i> รายการอาหาร</h2>
+		<h3>โต๊ะที่: {{$dining_table->id}}</h3>
+		<h3><i class="fas fa-utensils"></i> รายการอาหาร</h3>
 		<i class="btn fas fa-shopping-basket"  style="color:var(--pink); font-size: 36px;"></i>
 	</div>
 

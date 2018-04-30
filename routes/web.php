@@ -12,9 +12,7 @@
 */
 use Illuminate\Support\Facades\Input;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 // Customer
 Route::get('/customer/{dining_table}', 'customer\MenusController@index')->where('dining_table','[0-9]+');
@@ -23,7 +21,18 @@ Route::post('/customer/{dining_table}', 'customer\MenusController@store')->where
 
 Route::get('/customer/{dining_table}/ordered', 'customer\OrdersController@index')->where('dining_table','[0-9]+');
 
-Route::get('/', function(){return redirect('/home');});
+Route::get('/', function(){
+    if(\Auth::user()) {
+        if (\Auth::user()->role === 'owner'){
+            return redirect('/report');
+        }else if (\Auth::user()->role === 'chef'){
+            return redirect('/chef/orders');
+        }else if (\Auth::user()->role === 'waiter'){
+            return redirect('/waiter/serve');
+        }
+    }
+    return redirect('/home');
+});
 
 Auth::routes();
 

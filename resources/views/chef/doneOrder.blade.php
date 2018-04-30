@@ -21,9 +21,9 @@ th {
 
 @section('content')
 	<div id="show-order">
-	<table class="table">
-		<thead class="table-success">
-			<tr>
+	<table class="table table-light">
+		<thead class="table-secondary">
+			<tr >
             <th scope="col" >หมายเลขโต๊ะ</th>
 			<th scope="col">รายการอาหารที่สั่ง</th>
 			<th scope="col" >จำนวนที่สั่ง</th>

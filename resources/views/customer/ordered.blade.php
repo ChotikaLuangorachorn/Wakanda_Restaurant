@@ -2,7 +2,8 @@
 
 @section('page-title')
 	<div class="col-sm-12" style="text-align: center;">
-		<h2>รายการอาหารที่คุณสั่งแล้ว</h2>
+		<h3>โต๊ะที่: {{$dining_table->id}}</h3>	
+		<h3>รายการอาหารที่คุณสั่งแล้ว</h3>
 	</div>
 
 
