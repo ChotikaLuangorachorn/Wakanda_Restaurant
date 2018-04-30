@@ -45,7 +45,7 @@ i {
                         @if($categoryNo == $menu->category_id && $menu->status === 'sell')
                         <label for="menu{{$menu->id}}" class="btn btn-outline-success " style="display:inline-block;width: 45%;  margin-right: 2%; color:black">
                             <div class="card border-primary .d-inline-block">
-                                <div class="card-header textoverflow"  title="{{$menu->name}}" >{{$menu->name}}</div>
+                                <div class="card-header textoverflow"  title="{{$menu->name}}"git >{{$menu->name}}</div>
                                 <div class="card-body">
                                 @if ($menu->image_path!='')
                                     <div id='img-menu' style="width: 100%;height: 130px;background: url(/images/menu/{{$menu->image_path}});background-repeat: no-repeat;background-size: cover;background-position: center"></div>
