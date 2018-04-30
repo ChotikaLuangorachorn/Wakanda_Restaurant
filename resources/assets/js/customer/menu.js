@@ -109,12 +109,12 @@ $('#btn-purchase').click(function(e){
 });
 
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
+  $("#search-menu").on("keyup", function() {
   	for (index in categories) {
 		$('#card-category'+categories[index].id).show();
 	}
     var value = $(this).val().toLowerCase();
-    $(".myTable .card").filter(function() {
+    $(".card-menu .card").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
