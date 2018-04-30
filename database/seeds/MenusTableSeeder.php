@@ -49,6 +49,15 @@ class MenusTableSeeder extends Seeder
             $menu->save();
         });
         factory(Menu::class,1)->create([
+            'name' => 'ขนมปังกระเทียมอบชีส',
+            'price' => 95.0,
+            'category_id' => 1,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+        factory(Menu::class,1)->create([
             'name' => 'ผักโขมอบชีส',
             'price' => 180.0,
             'category_id' => 1,
@@ -57,6 +66,16 @@ class MenusTableSeeder extends Seeder
             $menu->image_path = $menu->id . ".jpg";
             $menu->save();
         });
+        factory(Menu::class,1)->create([
+            'name' => 'มันบด',
+            'price' => 180.0,
+            'category_id' => 1,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+
 
 
 //Main course category_id = 2
@@ -132,6 +151,33 @@ class MenusTableSeeder extends Seeder
             $menu->image_path = $menu->id . ".jpg";
             $menu->save();
         });
+        factory(Menu::class,1)->create([
+            'name' => 'หอยเชลล์อบเนย',
+            'price' => 110.0,
+            'category_id' => 2,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+        factory(Menu::class,1)->create([
+            'name' => 'ส้มตำไทย',
+            'price' => 55.0,
+            'category_id' => 2,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+        factory(Menu::class,1)->create([
+            'name' => 'สุกี้น้ำ',
+            'price' => 75.0,
+            'category_id' => 2,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
 
 //Beverage category_id = 3
     	factory(Menu::class,1)->create([
@@ -143,22 +189,63 @@ class MenusTableSeeder extends Seeder
             'name' => 'น้ำส้ม',
             'price' => 45.0,
             'category_id' => 3,
-        ]);
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
         factory(Menu::class,1)->create([
             'name' => 'โค้ก',
             'price' => 25.0,
             'category_id' => 3,
-        ]);
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
         factory(Menu::class,1)->create([
             'name' => 'ชาเขียว',
             'price' => 30.0,
             'category_id' => 3,
-        ]);
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
         factory(Menu::class,1)->create([
             'name' => 'น้ำเก๊กฮวย',
             'price' => 25.0,
             'category_id' => 3,
         ]);
+        factory(Menu::class,1)->create([
+            'name' => 'โกโก้',
+            'price' => 25.0,
+            'category_id' => 3,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+
+        factory(Menu::class,1)->create([
+            'name' => 'กาแฟ',
+            'price' => 25.0,
+            'category_id' => 3,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+        factory(Menu::class,1)->create([
+            'name' => 'แตงโม',
+            'price' => 25.0,
+            'category_id' => 3,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+
 
 
     	//Dessert category_id = 4
@@ -200,6 +287,15 @@ class MenusTableSeeder extends Seeder
         });
         factory(Menu::class,1)->create([
             'name' => 'เค้กช็อกโกแลตลาวากับไอศกรีมวานิลลา',
+            'price' => 135.0,
+            'category_id' => 4,
+        ])->each(function($menu){
+            $menu->save();
+            $menu->image_path = $menu->id . ".jpg";
+            $menu->save();
+        });
+        factory(Menu::class,1)->create([
+            'name' => 'แพนเค้ก',
             'price' => 135.0,
             'category_id' => 4,
         ])->each(function($menu){
