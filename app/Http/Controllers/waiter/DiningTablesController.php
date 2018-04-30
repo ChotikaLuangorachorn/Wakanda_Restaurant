@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\waiter;
 
 use App\Dining_table;
+use App\Order;
+use App\Receipt;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -20,9 +22,11 @@ class DiningTablesController extends Controller
             return redirect('/home');
         }
         $dining_tables = Dining_table::all();
+        $receipts = Receipt::where('status','eating')->orderBy('table_id')->get();
         $countEmptyTable = Dining_table::where('status','=','empty')->count();
         return view('waiter.manageTable', ['dining_tables' => $dining_tables,
-                                          'countEmptyTable'=> $countEmptyTable]);
+                                          'countEmptyTable'=> $countEmptyTable,
+                                          'receipts' => $receipts]);
     }
 
     /**
@@ -77,11 +81,20 @@ class DiningTablesController extends Controller
      */
     public function update(Request $request, Dining_table $dining_table)
     {
-      $dining_table = Dining_table::where('id',$request->input('clearbtn'))->first();
+      $dining_table = Dining_table::with(['receipts'])->where('id',$request->input('clearbtn'))->first();
       $dining_table->status = "empty";
+      foreach ($dining_table->receipts as $receipt) {
+        $orders = Order::where('receipt_id',$receipt->id)->get();
+        foreach ($orders as $order) {
+            $order->status = "served";
+            $order->save();
+        }
+      }
       $dining_table->save();
       return redirect('/waiter/manageTable');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
