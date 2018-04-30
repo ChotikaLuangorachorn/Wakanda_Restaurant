@@ -1,11 +1,24 @@
 @extends('layouts.customer')
 
 @section('page-title')
-	<div class="col-sm-12">
-		<h3>โต๊ะที่: {{$dining_table->id}}</h3>
-		<h3><i class="fas fa-utensils"></i> รายการอาหาร</h3>
-		<i class="btn fas fa-shopping-basket"  style="color:var(--pink); font-size: 36px;"></i>
-	</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h3>โต๊ะที่: {{$dining_table->id}}</h3>
+				<h3><i class="fas fa-utensils"></i> รายการอาหาร</h3>
+				<input class="form-control mr-sm-2 float-left" id="myInput" type="text" placeholder="ค้นหารายการอาหาร" style="width: 200px;">
+
+				<i class="btn fas fa-shopping-basket float-right"  style="color:var(--pink); font-size: 36px;">
+				</i>
+				
+			</div>
+		</div>
+
+
+	<div class="row" style="">
+		<div class="col-sm-4">
+			
+		</div>
+	</div>		
 
 	<div class="modal" id="modal-basket">
 		<div class="modal-dialog" role="document">
@@ -78,6 +91,7 @@
 
 @section('content')
 <!-- category -->
+
 	<div class="row" id="btn-category" style="text-align: center;">
 		@foreach($categories as $category)
 		<div class="col" style="padding: 5px;">
@@ -85,15 +99,9 @@
 		</div>
 		@endforeach
 	</div>
-
-	<div id="menu-list">
+	<div class="" id="menu-list">
 	@foreach($categories as $category)
-		<!-- <div class="col">
-			@foreach($menus as $menu)
-				{{ $menu->name }} <br>
-			@endforeach
-		</div> -->
-		<div class="row" id="card-category{{$category->id}}" style="margin: 10px;">
+		<div class="row myTable" id="card-category{{$category->id}}" style="margin: 10px;">
 			@foreach($menus as $menu)
 				@if ($menu->category_id==$category->id)
 				<div class="card border-danger mb-3" style="text-align: center;width: 15rem;margin: 10px;">

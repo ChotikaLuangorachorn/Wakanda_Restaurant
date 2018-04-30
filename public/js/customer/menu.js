@@ -179,17 +179,18 @@ function showOrderingTable() {
 $('#btn-purchase').click(function (e) {
 	document.getElementById('modal-purchase').style.display = 'block';
 });
-// $("#btn-purchase").click(function(e){
-// 	console.log("purchase");
-// 	$.ajax({
-// 		method: "post",
-// 		data: {
-// 			m1:1,
-// 			m2:2
-// 		},
-// 		url: "/order"
-// 	})
-// })
+
+$(document).ready(function () {
+	$("#myInput").on("keyup", function () {
+		for (index in categories) {
+			$('#card-category' + categories[index].id).show();
+		}
+		var value = $(this).val().toLowerCase();
+		$(".myTable .card").filter(function () {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+		});
+	});
+});
 
 /***/ })
 
