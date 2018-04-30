@@ -9,7 +9,6 @@
 @endsection
 
 @section('page-title')
-	
 	@yield('page-title')
 	
 @endsection
