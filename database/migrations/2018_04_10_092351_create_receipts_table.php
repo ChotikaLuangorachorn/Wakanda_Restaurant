@@ -16,6 +16,10 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('table_id');
+            $table->enum('status', [
+                'eating', 'clear'
+            ])->default('eating');
+
             $table->foreign('table_id')
                     ->references('id')
                     ->on('dining_tables');
