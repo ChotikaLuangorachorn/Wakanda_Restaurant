@@ -17,7 +17,7 @@
           <th scope="col">สถานะ</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="menuTable">
         @foreach($menus as $menu)
           <tr class="table-light">
             <th scope="row">{{ $loop->iteration }}</th>
@@ -34,7 +34,6 @@
               @else
                 ไม่เปิดขาย
               @endif
-              {{-- {{$menu->status}} --}}
             </td>
           </tr>
         @endforeach
@@ -53,7 +52,7 @@
     $(document).ready(function(){
       $("#searchInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#userTable tr").filter(function() {
+        $("#menuTable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });

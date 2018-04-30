@@ -1,7 +1,7 @@
 @extends('layouts.owner')
 
 @section('page-title')
-	<p>รายการสรุป</p>
+	<p>เพิ่มพนักงานใหม่</p>
 @endsection
 
 @section('content')
@@ -9,8 +9,8 @@
 		
 	</div>
   <div class="jumbotron">
-    <h2>Create new staff</h2>
-    <p>Please fill all form.</p>
+    <h2>เพิ่มพนักงานใหม่</h2>
+    <p>โปรดกรอกทุกช่อง</p>
   </div>
   <div class="">
     <form class="" action="/users" method="post">
@@ -25,12 +25,12 @@
         </div>
       @endif
       <div class="form-group">
-        <label for="firstname">First Name: </label>
+        <label for="firstname">ชื่อ: </label>
         <input class="form-control" type="text" name="firstname" value="{{ old('firstname') }}">
       </div>
 
       <div class="form-group">
-        <label for="lastname">Last Name: </label>
+        <label for="lastname">นามสกุล: </label>
         <input class="form-control" type="text" name="lastname" value="{{ old('lastname') }}">
       </div>
 
@@ -40,17 +40,17 @@
       </div>
 
       <div class="form-group">
-        <label for="password">Password: </label>
+        <label for="password">รหัสผ่าน: </label>
         <input class="form-control" type="password" name="password" value="{{ old('password') }}">
       </div>
 
       <div class="form-group">
-        <label for="password_confirmation">Confirm Password: </label>
+        <label for="password_confirmation">ยืนยันรหัสผ่าน: </label>
         <input class="form-control" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}">
       </div>
 
       <div class="form-group">
-        <label>Role: </label>
+        <label>ตำแหน่ง: </label>
         <select class="form-control" name="role">
           @foreach($roles as $key=>$value)
             @if(old('role') == $key)
@@ -64,10 +64,10 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success">ยืนยัน</button>
         </div>
         <div class="col-sm-6">
-          <button type="reset" class="btn btn-danger">Reset</button>
+          <button type="reset" class="btn btn-danger">รีเซ็ต</button>
         </div>
       </div>
     </form>
