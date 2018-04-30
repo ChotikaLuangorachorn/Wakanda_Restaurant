@@ -1,7 +1,8 @@
 @extends('layouts.owner')
 
 @section('page-title')
-	<p>รายชื่อพนักงานทั้งหมด</p>
+  <p>รายชื่อพนักงานทั้งหมด</p>
+  <input id="searchInput" type="text" placeholder="ค้นหา..">
 @endsection
 
 @section('content')
@@ -17,7 +18,7 @@
           <th scope="col">ตำแหน่ง</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="userTable">
         @foreach($users as $user)
           <tr class="table-light">
             <th scope="row">{{ $loop->iteration }}</th>
@@ -40,3 +41,16 @@
 
 	</div>
 @endsection
+
+@push('js')
+  <script>
+    $(document).ready(function(){
+      $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#userTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });  
+  </script>
+@endpush

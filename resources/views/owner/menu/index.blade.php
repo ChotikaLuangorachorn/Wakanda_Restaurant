@@ -1,7 +1,8 @@
 @extends('layouts.owner')
 
 @section('page-title')
-	<p>รายการอาหารทั้งหมด</p>
+  <p>รายการอาหารทั้งหมด</p>
+  <input id="searchInput" type="text" placeholder="ค้นหา..">
 @endsection
 
 @section('content')
@@ -46,6 +47,19 @@
 
 	</div>
 @endsection
+
+@push('js')
+  <script>
+    $(document).ready(function(){
+      $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#userTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });  
+  </script>
+@endpush
 
 
 
