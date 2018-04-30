@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,6 +214,7 @@ return [
          * Package Service Providers...
          */
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
