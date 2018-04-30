@@ -11,7 +11,7 @@
 	@if(Auth::check())
 	<form action="/logout" method="POST">
 		@csrf
-		<button class="btn btn-secondary" value="submit">sign out</button>
+		<button class="btn btn-secondary" value="submit">ออกจากระบบ</button>
 	</form>
 	@else
 	<button type="button" class="btn btn-secondary">

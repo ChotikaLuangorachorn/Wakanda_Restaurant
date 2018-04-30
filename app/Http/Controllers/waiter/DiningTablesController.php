@@ -5,6 +5,7 @@ namespace App\Http\Controllers\waiter;
 use App\Dining_table;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class DiningTablesController extends Controller
 {
@@ -15,6 +16,9 @@ class DiningTablesController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->cant('isWaiter', User::class)){
+            return redirect('/home');
+        }
         $dining_tables = Dining_table::all();
         $countEmptyTable = Dining_table::where('status','=','empty')->count();
         return view('waiter.manageTable', ['dining_tables' => $dining_tables,

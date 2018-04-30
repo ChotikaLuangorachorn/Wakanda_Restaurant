@@ -4,6 +4,7 @@ namespace App\Http\Controllers\chef;
 
 use App\Order;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,10 @@ class DoneOrdersController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->cant('isChef', User::class)){
+                return redirect('/home');
+            }
+
         $orders = Order::where('status','cooked')->orderBy('created_at', 'ASC')->get();
         $categories = Category::all();
         return view('chef.doneOrder' , compact('orders', 'categories'));

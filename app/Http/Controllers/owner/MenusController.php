@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\owner;
 
 use App\Menu;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,10 @@ class MenusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        if(\Auth::user()->cant('isOwner', User::class)){
+            return redirect('/home');
+        }
         $menus = Menu::all();
         return view('owner.menu.index', ['menus'=>$menus]);
     }

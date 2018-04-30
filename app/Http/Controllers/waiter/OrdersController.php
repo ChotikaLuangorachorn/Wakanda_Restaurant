@@ -5,6 +5,7 @@ namespace App\Http\Controllers\waiter;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class OrdersController extends Controller
 {
@@ -15,6 +16,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->cant('isWaiter', User::class)){
+            return redirect('/home');
+        }
       $orders = Order::where('status','=','cooked')->orderBy('receipt_id')->get();
       $countOrder = Order::where('status','=','cooked')->count();
       return view('waiter.serve', ['orders' => $orders,

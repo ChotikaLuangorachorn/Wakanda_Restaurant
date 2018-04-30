@@ -15,6 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+      if(\Auth::user()->cant('isOwner', User::class)){
+        return redirect('/home');
+    }
       $users = User::all();
       return view('owner.staff.index', ['users'=>$users]);
     }

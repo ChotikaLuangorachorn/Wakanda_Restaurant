@@ -5,6 +5,7 @@ namespace App\Http\Controllers\owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ReportsController extends Controller
 {
@@ -24,6 +25,10 @@ class ReportsController extends Controller
 
     public function allReport()
     {
+        if(\Auth::user()->cant('isOwner', User::class)){
+            return 'a';
+        }
+        // $this->authorize('isOwner',User::class);
         $orders = \App\Order::all();
         return $this->createChart($orders);
         

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\chef;
 
 use App\Menu;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,9 @@ class MenusController extends Controller
      */
     public function index($categoryNo = 1)
     {
+        if(\Auth::user()->cant('isChef', User::class)){
+            return redirect('/home');
+        }
         $menus = Menu::all()->keyBy('id');
         $categories = Category::all();
         return view('chef.menu', compact('menus', 'categories', 'categoryNo'));

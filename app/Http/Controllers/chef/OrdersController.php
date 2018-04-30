@@ -5,6 +5,7 @@ namespace App\Http\Controllers\chef;
 use App\Order;
 use App\Menu;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,9 @@ class OrdersController extends Controller
      */
     public function index($orderby = 'created_at', $method = 'asc')
     {
+        if(\Auth::user()->cant('isChef', User::class)){
+            return redirect('/home');
+        }
         $orders2 = DB::table('orders')
         ->join('receipts', 'orders.receipt_id', '=', 'receipts.id')
         ->join('menus', 'orders.menu_id', '=', 'menus.id')
