@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	
+	<div style="background:white;padding:15px">
 	<div>
 		<form class="" action="/report" method="post">
 			@csrf
@@ -82,6 +82,7 @@
 			</form>
 		
 		</div>
+	</div>
 
 @endsection
 
