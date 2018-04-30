@@ -43,11 +43,46 @@
 	</div>
 	<div class="">
 		<div id="chart-div"></div>
-      	{!! \Lava::render('DonutChart', 'cate_num', 'chart-div') !!}
+      	{!! \Lava::render('PieChart', 'cate_num', 'chart-div') !!}
 	</div>
+
 	<div>
-		<canvas id="bar-chart" width="800" height="450"></canvas>
-	</div>
+			<form class="" action="/report/orderpdf" method="post">
+				@csrf
+				@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+				<div>
+					<p>ออกรายงานรายการสั่งอาหาร</p>
+					<div class="form-group">
+						<label>ออกรายงานตาม: </label>
+						<select class="form-control" id="selectBy2" name="selectBy2">	
+							<option value="all" selected>ทั้งหมด</option>	
+							<option value="date">ตามวันที่</option>
+						</select>
+					</div>
+					
+					<div class="form-group" id="date2">
+						<label for="date">เลือกวันที่: </label>
+						<input class="form-control" type="date" name="date2" value="{{ old('date2') }}">
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<button type="submit" class="btn btn-success">ออกรายงาน</button>
+					</div>	
+				</div>
+			</form>
+		
+		</div>
+
 @endsection
 
 @push('js')
@@ -61,7 +96,17 @@
       		else{
         		$("#date").show();
       		}
-    	});	
+		});	
+		
+		$("#date2").hide();
+    	$('#selectBy2').on('change', function() {
+      		if ( this.value === 'all'){
+        		$("#date2").hide();
+      		}
+      		else{
+        		$("#date2").show();
+      		}
+    	});
 	});
 </script>
 @endpush

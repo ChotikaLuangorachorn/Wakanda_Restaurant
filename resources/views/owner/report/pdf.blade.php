@@ -1,3 +1,0 @@
-<body>
-    <table></table>
-</body>

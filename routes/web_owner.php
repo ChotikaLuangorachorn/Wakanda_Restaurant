@@ -11,3 +11,6 @@ Route::resource('/menus' ,'owner\MenusController');
 //report 
 Route::get('report','owner\ReportsController@allReport');
 Route::post('report','owner\ReportsController@dailyReport');
+
+//pdf
+Route::post('report/orderpdf','owner\ReportsController@orderPdf');

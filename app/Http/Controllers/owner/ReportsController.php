@@ -68,12 +68,34 @@ class ReportsController extends Controller
         }
 
 
-        $donutchart = \Lava::DonutChart('cate_num', $table, [
+        $donutchart = \Lava::PieChart('cate_num', $table, [
                     'title' => 'จำนวนอาหารที่ขายได้ในแต่ละประเภท' . $type 
                 ]);
 
         return view('owner.report.report');
         
+    }
+
+    public function orderPdf(Request $request)
+    {   
+        if ($request->input('selectBy2') === "all"){
+            $orders = \App\Order::all();
+            return $this->createReport($orders,'ทั้งหมด');
+        }else{
+            $validatedData = $request->validate([
+                'date2' => 'required|date'
+            ]);
+            
+            $orders = \App\Order::whereDate('created_at', '=', date($request->input('date2')))->get();
+            return $this->createReport($orders, 'วันที่ ' . $request->input('date2'));
+        }
+        
+    }
+
+    function createReport($orders,$type)
+    {
+        $pdf = PDF::loadView('owner.report.orderpdf',['orders'=>$orders,'type'=>$type]);
+        return @$pdf->stream();
     }
 
     
