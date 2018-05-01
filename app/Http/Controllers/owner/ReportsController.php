@@ -79,14 +79,14 @@ class ReportsController extends Controller
     public function orderPdf(Request $request)
     {   
         if ($request->input('selectBy2') === "all"){
-            $orders = \App\Order::all();
+            $orders = \App\Order::orderBy('amount', 'desc')->get();
             return $this->createReport($orders,'ทั้งหมด');
         }else{
             $validatedData = $request->validate([
                 'date2' => 'required|date'
             ]);
             
-            $orders = \App\Order::whereDate('created_at', '=', date($request->input('date2')))->get();
+            $orders = \App\Order::whereDate('created_at', '=', date($request->input('date2')))->orderBy('amount', 'desc')->get();
             return $this->createReport($orders, 'วันที่ ' . $request->input('date2'));
         }
         

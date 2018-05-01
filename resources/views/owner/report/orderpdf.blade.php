@@ -36,6 +36,7 @@
                     <td>ลำดับที่</td>
                     <td>รายการอาหาร</td>
                     <td>จำนวน</td>
+                    <td>ราคา(บาท)</td>
                     <td>วันที่สั่ง</td>
                 </tr>
             </thead>
@@ -45,6 +46,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $order->menus->name }}</td>
                         <td>{{ $order->amount }}</td>
+                        <td>{{ $order->menus->price }}</td>
                         <td>{{ $order->created_at }}</td>
                     </tr>
                 @endforeach
