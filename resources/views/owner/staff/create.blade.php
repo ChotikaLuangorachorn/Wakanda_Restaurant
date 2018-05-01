@@ -13,7 +13,7 @@
     <p>โปรดกรอกทุกช่อง</p>
   </div>
   <div class="">
-    <form class="" action="/users" method="post">
+    <form class="" action="/users" method="post" enctype="multipart/form-data">
       @csrf
       @if ($errors->any())
         <div class="alert alert-danger">
@@ -32,6 +32,11 @@
       <div class="form-group">
         <label for="lastname">นามสกุล: </label>
         <input class="form-control" type="text" name="lastname" value="{{ old('lastname') }}">
+      </div>
+
+      <div class="form-group">
+        <label for="nickname">ชื่อเล่น: </label>
+        <input class="form-control" type="text" name="nickname" value="{{ old('nickname') }}">
       </div>
 
       <div class="form-group">
@@ -60,6 +65,11 @@
             @endif
           @endforeach
         </select>
+      </div>
+
+      <div class="form-group">
+        <label for="image">รูปภาพ: </label>
+        <input class="form-control" type="file" name="image" value="{{ old('image') }}">
       </div>
 
       <div class="form-group row">

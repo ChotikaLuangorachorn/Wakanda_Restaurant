@@ -47,18 +47,26 @@ class UsersController extends Controller
     {
       try{
         $validatedData = $request->validate([
-            'firstname' => 'required|unique:users,firstname',
+            'firstname' => 'required',
             'lastname' => 'required',
             'password' => 'required|confirmed',
-            'email' => 'required|email'
+            'email' => 'required|email|unique:users,email',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000000',
+            'nickname' => 'required'
         ]);
 
         $user = new User;
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
+        $user->nickname = $request->input('nickname');
         $user->password = bcrypt($request->input('password'));
         $user->email = $request->input('email');
         $user->role = $request->input('role');
+        $user->save();
+        $mime = $request->image->getClientOriginalExtension();
+        $file_name = ($user->id).'.'.$mime;
+        $path = $request->image->storeAs('profile', $file_name, 'public_images');
+        $user->image_path = $file_name;
         $user->save();
         return redirect('/users/' . $user->id);
       }catch (Exception $e) {
@@ -104,18 +112,29 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
       $validatedData = $request->validate([
-          'firstname' => 'required|unique:users,firstname,'.$user->id,
+          'firstname' => 'required',
           'lastname' => 'required',
+          'nickname' => 'required',
           // 'password' => 'required|confirmed',
           'email' => 'required|email|unique:users,email,'.$user->id,
+          'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000000'
       ]);
 
       $user->firstname = $request->input('firstname');
       $user->lastname = $request->input('lastname');
+      $user->nickname = $request->input('nickname');
       // $user->password = bcrypt($request->input('password'));
       $user->email = $request->input('email');
       $user->role = $request->input('role');
       $user->save();
+      if ($request->hasFile('image')){
+        \Storage::disk('public_images')->delete('profile/'.$user->image_path);
+        $mime = $request->image->getClientOriginalExtension();
+        $file_name = ($user->id).'.'.$mime;
+        $path = $request->image->storeAs('profile', $file_name, 'public_images');
+        $user->image_path = $file_name;
+        $user->save();
+    }
       return redirect('/users/' . $user->id);
     }
 
@@ -127,6 +146,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+      \Storage::disk('public_images')->delete('profile/'.$user->image_path);
       $user->delete();
       return redirect('/users');
     }

@@ -12,7 +12,7 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Email</th>
+          <th scope="col">ชื่อเล่น</th>
           <th scope="col">ชื่อ</th>
           <th scope="col">นามสกุล</th>
           <th scope="col">ตำแหน่ง</th>
@@ -24,7 +24,7 @@
             <th scope="row">{{ $loop->iteration }}</th>
             <td>
               <a href="{{ url('/users/' . $user->id) }}">
-                {{ $user->email }}
+                {{ $user->nickname }}
               </a>
             </td>
             <td>{{ $user->firstname }}</td>
