@@ -43,10 +43,17 @@
 	</div>
 	<div class="">
 		<div id="chart-div"></div>
-      	{!! \Lava::render('PieChart', 'cate_num', 'chart-div') !!}
-	</div>
-
+      		{!! \Lava::render('PieChart', 'cate_num', 'chart-div') !!}
+		</div>
 	<div>
+	
+	<div class="">
+		<div id="chart-div-hit"></div>
+			{!! \Lava::render('PieChart', 'hit_chart', 'chart-div-hit') !!}
+		</div>
+		<br>
+	<div>
+
 			<form class="" action="/report/orderpdf" method="post">
 				@csrf
 				@if ($errors->any())

@@ -20,7 +20,13 @@ class ReportsController extends Controller
             ]);
             
             $orders = \App\Order::whereDate('created_at', '=', date($request->input('date')))->get();
-            return $this->createChart($orders, 'วันที่ ' . $request->input('date'));
+            $menus = \App\Menu::all();
+            $menus_count = array();
+            foreach ($menus as $menu) {
+                $menucount = \App\Order::where('menu_id', $menu->id)->whereDate('created_at', '=', date($request->input('date')))->count();
+                $menus_count[$menu->name] = $menucount;
+            }
+            return $this->createChart($orders ,$menus_count ,'วันที่ ' . $request->input('date'));
         }
     }
 
@@ -31,11 +37,17 @@ class ReportsController extends Controller
         }
         // $this->authorize('isOwner',User::class);
         $orders = \App\Order::all();
-        return $this->createChart($orders ,'ทั้งหมด');
+        $menus = \App\Menu::all();
+        $menus_count = array();
+        foreach ($menus as $menu) {
+            $menucount = \App\Order::where('menu_id', $menu->id)->count();
+            $menus_count[$menu->name] = $menucount;
+        }
+        return $this->createChart($orders ,$menus_count ,'ทั้งหมด');
         
     }
     
-    function createChart($orders ,$type){
+    function createChart($orders ,$menus_count ,$type ){
         $categories_count = [0,0,0,0];
         /*
         อาหารแต่ละประเภทคือ
@@ -66,10 +78,21 @@ class ReportsController extends Controller
         foreach ($categories as $category) {
             $table->addRow(array($category->name, $categories_count[$category->id-1]));
         }
-
-
         $donutchart = \Lava::PieChart('cate_num', $table, [
                     'title' => 'จำนวนอาหารที่ขายได้ในแต่ละประเภท' . $type 
+                ]);
+
+        //hit chart        
+
+        $hittable = \Lava::DataTable();
+        $hittable->addStringColumn('รายการอาหาร')
+            ->addNumberColumn('จำนวนที่ขายได้');
+            
+        foreach ($menus_count as $name => $count) {
+            $hittable->addRow(array($name, $count));
+        }
+        $hitchart = \Lava::PieChart('hit_chart', $hittable, [
+                    'title' => 'จำนวนอาหารที่ขายได้' . $type 
                 ]);
 
         return view('owner.report.report');
@@ -97,7 +120,7 @@ class ReportsController extends Controller
         $pdf = PDF::loadView('owner.report.orderpdf',['orders'=>$orders,'type'=>$type]);
         return @$pdf->stream();
     }
-
+    
     
 }
 
