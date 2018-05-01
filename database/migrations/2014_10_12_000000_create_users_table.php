@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('nickname');
+            $table->string('image_path')->default('');
             $table->enum('role', [
                 'chef','waiter', 'owner'
                 ]);
