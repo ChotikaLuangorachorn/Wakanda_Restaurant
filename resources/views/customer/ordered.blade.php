@@ -3,7 +3,7 @@
 @section('page-title')
 	<div class="col-sm-12" style="text-align: center;">
 		<h3>โต๊ะที่: {{$dining_table->id}}</h3>	
-		<h3>รายการอาหารที่คุณสั่งแล้ว</h3>
+		<h3><i class="fas fa-clock"></i> รายการอาหารที่คุณสั่งแล้ว</h3>
 	</div>
 
 

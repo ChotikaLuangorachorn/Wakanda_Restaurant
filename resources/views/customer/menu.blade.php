@@ -17,7 +17,10 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 		    	<div class="modal-header">
-		    		<h5 class="modal-title">รายการอาหารที่คุณกำลังสั่ง</h5>
+		    		<h5 class="modal-title">
+		    			<i class="fas fa-clipboard-list" style="font-size: 32px;"></i> 
+		    			รายการอาหารที่คุณกำลังสั่ง
+		    		</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('modal-basket').style.display='none'">
 						<span aria-hidden="true">&times;</span>
 					</button>
