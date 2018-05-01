@@ -24,7 +24,7 @@
 * public
     - images - รูปทั้งหมด
         - menu - รูปเมนูอาหาร
-        - theme - รูปที่ใช้ในการทำ Header และ  Background
+        - theme - รูปที่ใช้ในการทำ Header และ  Background หรือรูปที่ใช้ตกแต่งเว็บ
         - table_qr - รูป QR code ของแต่ละโต๊ะ
 
 * routes - แบ่ง route ตาม role
@@ -35,19 +35,19 @@
     - web_waiter.php - ของ Waiter
 * resources
     - assets
-        - js
-            - chef
+        - js - กำหนด action หรือ การเคลื่อนไหว หรือ การตอบสนองของเว็บ
+            - chef 
             - customer
             - home
         - sass 
             - app.scss เก็บ style ขอเว็บทั้งหมด
-    - views
-        - layouts
-        - home
-        - chef
-        - customer
-        - owner
-        - waiter
+    - views 
+        - layouts - layout ของหน้าเว็บทุกหน้า
+        - home - หน้าเว็บของหน้าหลัก
+        - chef - หน้าเว็บของ Chef
+        - customer - หน้าเว็บของ Customer
+        - owner - หน้าเว็บของ Owner
+        - waiter - หน้าเว็บของ Waiter
 * app
     - Http/Controllers 
         - chef
