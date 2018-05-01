@@ -63,3 +63,4 @@
     - User.php
 * database มี migrations, factories, และ seeds
 - Schema_Wakanda.jpg : Schema ของโปรเจค
+- หน้าที่ความรับผิดชอบ กลุ่ม Wakanda
