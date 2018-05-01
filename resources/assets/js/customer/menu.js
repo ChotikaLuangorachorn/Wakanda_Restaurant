@@ -106,6 +106,7 @@ function showOrderingTable(){
 };
 $('#btn-purchase').click(function(e){
 	document.getElementById('modal-purchase').style.display='block';
+	document.getElementById('modal-basket').style.display='none';
 });
 
 $(document).ready(function(){

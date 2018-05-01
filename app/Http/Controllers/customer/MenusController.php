@@ -48,6 +48,7 @@ class MenusController extends Controller
     {
         try {
             $validatedData = $request->validate([
+                'name' => 'required',
                 'cardNumber' => 'required|min:16|max:16',
                 'exp' => 'required',
                 'cvv' => 'required|min:3|max:3',

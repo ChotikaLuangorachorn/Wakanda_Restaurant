@@ -5,7 +5,7 @@
 			<div class="col-sm-12">
 				<h3>โต๊ะที่: {{$dining_table->id}}</h3>
 				<h3><i class="fas fa-utensils"></i> รายการอาหาร</h3>
-				<input class="form-control mr-sm-2 float-left" id="search-menu" type="text" placeholder="ค้นหารายการอาหาร" style="width: 200px;">
+				<input class="form-control mr-sm-2 float-left" id="search" type="text" placeholder="ค้นหารายการอาหาร...">
 
 				<i class="btn fas fa-shopping-basket float-right"  style="color:var(--pink); font-size: 36px;">
 				</i>
@@ -46,12 +46,19 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 		    	<div class="modal-header">
-		    		<h5 class="modal-title">กรอกข้อมูลเพื่อชำระเงิน</h5>
+		    		<h5 class="modal-title">
+		    			<i class="far fa-credit-card" style="font-size: 32px;"></i> กรอกข้อมูลเพื่อชำระเงิน
+		    		</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('modal-purchase').style.display='none'">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
+					<div>
+						<img src="/images/theme/master-card.jpg" style="height: 80px;border: 2px solid;">
+						<img src="/images/theme/visa.jpg" style="height: 80px;border: 2px solid;">
+						<img src="/images/theme/discover.jpg" style="height: 80px;border: 2px solid;">
+					</div>
 					<form action="/customer/{{$dining_table->id}}" id='form-purchase' method="post">
 						 {{ csrf_field() }}
 						@if ($errors->any())
@@ -64,6 +71,8 @@
 						    </div>
 						@endif							 
 						<input name="order" id="order" type="text" value="" hidden="true">
+						<label>Name</label>
+						<input class='form-control' type="text" name="name" maxlength="16" placeholder='Name' value="{{ old('name') }}">
 						<label>Card Number</label>
 						<input class='form-control' type="number" name="cardNumber" maxlength="16" placeholder='Card Number' value="{{ old('cardNumber') }}">
 						<label>Expire Date</label>
