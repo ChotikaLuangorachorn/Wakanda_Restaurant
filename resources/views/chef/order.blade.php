@@ -69,7 +69,8 @@ th {
 		<tbody>
 			@foreach($orders as $order)
 				<tr class="table-primary" id="{{ $order->id }}">
-				<td scope="row">{{ $loop->iteration }}</td>
+				<!-- <td scope="row">{{ $loop->iteration }}</td> -->
+				<td scope="row">Time: {{ date("H:i ",strtotime($order->created_at)) }}</td>
 				<td>{{ $order->receipt->dining_table ?  $order->receipt->dining_table->id: "None" }}</td> 
 				<td>{{ $order->menus ?  $order->menus->name: "None" }}</td> 
 				<td>{{ $order->amount}}</td> 
