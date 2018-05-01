@@ -62,3 +62,4 @@
     - Receipt.php
     - User.php
 * database มี migrations, factories, และ seeds
+- Schema_Wakanda.jpg : Schema ของโปรเจค
