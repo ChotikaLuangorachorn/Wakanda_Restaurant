@@ -14,7 +14,7 @@
    เพื่อลงชื่อเข้าใช้แต่ละ role:
     - owner : email=admin@example.com, password=adminpassword
     - chef : email=chef@example.com, password=chefpassword
-    - waiter : email=waiter@example.com, password=waiterpassword
+    - waiter : email=waiter@example.com, password=waiterpassword  
    URLของลูกค้า เริ่มที่  
     ```การสแกนQR Code ของแต่ละโต๊ะ หรือ {local-host}/customer/{หมายเลขโต๊ะ}```  
     QR Code ของโต๊ะ ตัวอย่าง อยู่ที่: public/images/table_qr  
