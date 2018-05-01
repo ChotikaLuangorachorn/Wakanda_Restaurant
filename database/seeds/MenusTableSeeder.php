@@ -218,7 +218,7 @@ class MenusTableSeeder extends Seeder
             'category_id' => 3,
         ]);
         factory(Menu::class,1)->create([
-            'name' => 'โกโก้',
+            'name' => 'โกโก้ร้อน',
             'price' => 25.0,
             'category_id' => 3,
         ])->each(function($menu){
